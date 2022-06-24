@@ -31,6 +31,16 @@ const router = new VueRouter({
       name: "Login",
       component: () => import("../views/Login.vue"),
     },
+    {
+      path: "/additem",
+      name: "addItem",
+      component: () => import("../views/AddItem.vue"),
+    },
+    {
+      path: "/edititem",
+      name: "editItem",
+      component: () => import("../views/EditItem.vue"),
+    },
   ],
 });
 

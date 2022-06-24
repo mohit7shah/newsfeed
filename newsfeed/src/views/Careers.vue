@@ -15,6 +15,6 @@
   background-repeat: no-repeat;
   height: 650px;
   background-position: center;
-  width: 1536px;
+  width: 100%;
 }
 </style>

@@ -7,34 +7,61 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-nav>
-          <b-nav-item href="/" class="menu" active>Home</b-nav-item>
-          <b-nav-item href="/about" class="menu">About</b-nav-item>
-          <b-nav-item href="/careers" class="menu">Careers</b-nav-item>
-          <b-nav-item href="/contact" class="menu">Contact</b-nav-item>
-          <b-nav-item href="/login" class="menu">Logout</b-nav-item>
+          <router-link to="/" class="menu" active>Home</router-link>
+          <router-link to="/about" class="menu">About</router-link>
+          <router-link to="/careers" class="menu">Careers</router-link>
+          <router-link to="/contact" class="menu">Contact</router-link>
+          <router-link v-if="authenticated" to="/login" class="menu"
+            >Logout</router-link
+          >
         </b-nav>
       </b-collapse>
     </b-navbar>
+    <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      authenticated: false,
+      mockAccount: {
+        username: "admin",
+        password: "123456",
+      },
+    };
+  },
+  updated() {
+    if (!this.authenticated) {
+      this.$router.push({ name: "Login" });
+    }
+  },
+  methods: {
+    auth() {
+      this.$store.commit("logout");
+    },
+
+    setAuthenticated(status) {
+      this.authenticated = status;
+    },
+    logout() {
+      this.authenticated = false;
+    },
+  },
+};
+</script>
 
 <style>
 #nav {
   text-align: center;
 }
 
-#nav b-nav {
-  text-decoration: none;
-  font-weight: bold;
-  color: black;
-}
-
-.mr-sm-2 {
-  margin-left: 280px;
-}
-
 .dataname {
   margin-left: 15px;
+}
+.menu {
+  text-decoration: none;
+  margin-left: 15px;
+  color: black;
 }
 </style>

@@ -26,6 +26,7 @@
               <b-dropdown-item>Desending</b-dropdown-item>
             </b-nav-item-dropdown>
           </div>
+          <router-link to="/login" class="login">Login</router-link>
         </div>
       </b-nav-form>
     </b-nav>
@@ -37,39 +38,16 @@
 
 <script>
 import productitem from "../components/ProductItem.vue";
-//import loginForm from "../views/Login.vue";
 export default {
   components: {
     productitem,
-    //  loginForm,
   },
-  computed: {
-    //   loginver() {
-    //     return this.$router.getters.loginVerification;
-    //   },
-    //sorting() {
-    /*let sortedNews = this.productitem;
-      sortedNews = sortedNews.sort((a, b) => {
-        let fa = a.title.toLowerCase(),
-          fb = b.title.toLowerCase();
-        if (fa < fb) {
-          return -1;
-        }
-        if (fa > fb) {
-          return 1;
-        }
-      });
-      return 0;*/
-    //},
-  },
-
   methods: {
     verifyLogin() {
-      // if (loginForm.loginSuccess === true) {
-      //   this.$router.push({ path: "/additem" });
-      // } else {
-      //   alert("login first");
-      // }
+      if (localStorage.getItem("token") == null) {
+        alert("Please login first");
+        this.$router.push("/login");
+      }
     },
   },
 };
