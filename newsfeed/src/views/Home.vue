@@ -15,9 +15,9 @@
           </div>
           <div class="drop1">
             <b-nav-item-dropdown text="Sort By">
-              <b-dropdown-item @click="sorting">Title</b-dropdown-item>
-              <b-dropdown-item @click="sorting">Body</b-dropdown-item>
-              <b-dropdown-item @click="sorting">Author</b-dropdown-item>
+              <b-dropdown-item>Title</b-dropdown-item>
+              <b-dropdown-item>Body</b-dropdown-item>
+              <b-dropdown-item>Author</b-dropdown-item>
             </b-nav-item-dropdown>
           </div>
           <div class="drop2">
@@ -47,9 +47,8 @@ export default {
     //   loginver() {
     //     return this.$router.getters.loginVerification;
     //   },
-
     //sorting() {
-      /*let sortedNews = this.productitem;
+    /*let sortedNews = this.productitem;
       sortedNews = sortedNews.sort((a, b) => {
         let fa = a.title.toLowerCase(),
           fb = b.title.toLowerCase();
@@ -78,7 +77,7 @@ export default {
 
 <style scoped>
 .mr-sm-2 {
-  margin-left: 215px;
+  margin-left: 235px;
   margin-top: 20px;
   justify-content: center;
   display: flex;
@@ -111,5 +110,5 @@ export default {
 .drop2 {
   margin-top: 7px;
   margin-left: 20px;
-
 }
+</style>

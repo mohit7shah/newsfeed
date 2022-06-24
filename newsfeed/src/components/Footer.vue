@@ -9,8 +9,9 @@ footer {
   background: grey;
   height: 25px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin-top: 25px;
+  margin-bottom: 0;
 }
 </style>
