@@ -22,11 +22,7 @@
 <script>
 export default {
   methods: {
-    editData() {
-      //   let newData = {
-      //     title: this.$refs.title.value,
-      //   };
-    },
+    editData() {},
   },
 };
 </script>

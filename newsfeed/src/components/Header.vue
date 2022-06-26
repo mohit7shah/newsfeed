@@ -31,7 +31,7 @@ export default {
       },
     };
   },
-  updated() {
+  OnMounted() {
     if (!this.authenticated) {
       this.$router.push({ name: "Login" });
     }

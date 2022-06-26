@@ -3,7 +3,12 @@
     <b-nav>
       <b-nav-form>
         <div class="dropdown">
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search...">
+          <b-form-input
+            size="sm"
+            class="mr-sm-2"
+            placeholder="Search..."
+            v-model.trim="query"
+          >
             <b-button size="sm" class="my-2 my-sm-0" type="submit"
               >Search</b-button
             >
@@ -14,19 +19,19 @@
             >
           </div>
           <div class="drop1">
-            <b-nav-item-dropdown text="Sort By">
+            <b-nav-item-dropdown text="Sort By" class="sorting">
               <b-dropdown-item>Title</b-dropdown-item>
               <b-dropdown-item>Body</b-dropdown-item>
               <b-dropdown-item>Author</b-dropdown-item>
             </b-nav-item-dropdown>
           </div>
           <div class="drop2">
-            <b-nav-item-dropdown text="Sorting direction">
+            <b-nav-item-dropdown text="Sorting In" class="sorting">
               <b-dropdown-item>Assending</b-dropdown-item>
               <b-dropdown-item>Desending</b-dropdown-item>
             </b-nav-item-dropdown>
           </div>
-          <router-link to="/login" class="login">Login</router-link>
+          <router-link to="/login" class="btn btn-success">Login</router-link>
         </div>
       </b-nav-form>
     </b-nav>
@@ -39,8 +44,20 @@
 <script>
 import productitem from "../components/ProductItem.vue";
 export default {
+  data() {
+    return {
+      query: "",
+    };
+  },
   components: {
     productitem,
+  },
+  computed: {
+    filterproduct() {
+      return this.$store.getters.newsDetails.filter((product) => {
+        return product.title.toLowerCase().includes(this.search.toLowerCase());
+      });
+    },
   },
   methods: {
     verifyLogin() {
@@ -54,6 +71,9 @@ export default {
 </script>
 
 <style scoped>
+.sorting {
+  color: #000;
+}
 .mr-sm-2 {
   margin-left: 235px;
   margin-top: 20px;
@@ -63,15 +83,16 @@ export default {
 
 .item {
   margin-right: 15px;
+  text-decoration: none;
+  text-transform: none;
+  color: black;
 }
 
 .add_item {
   margin-left: 50px;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   margin-top: 25px;
-  text-decoration: none;
-  text-transform: none;
 }
 
 .Data {
@@ -82,11 +103,20 @@ export default {
   margin-top: 10px;
   justify-content: center;
   display: flex;
+  color: #000;
 }
 
 .drop1,
 .drop2 {
   margin-top: 7px;
   margin-left: 20px;
+  text-decoration: none;
+  text-transform: none;
+  color: black;
+}
+
+.btn {
+  margin-left: 50px;
+  margin-top: 20px;
 }
 </style>

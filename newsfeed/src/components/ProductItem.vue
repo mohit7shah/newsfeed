@@ -10,8 +10,8 @@
       <div class="product_description">
         <p>{{ data.description }}</p>
       </div>
-      <button class="btn btn-success" @click="editbutton">Edit</button>
-      <button class="btn btn-danger">Remove</button>
+      <button class="btn btn-success" @click="editButton">Edit</button>
+      <button class="btn btn-danger" @click="removeButton">Remove</button>
     </b-card>
   </div>
 </template>
@@ -25,20 +25,50 @@ export default {
     },
   },
   methods: {
-    editbutton() {
-      this.$router.push({
-        path: "/edititem",
-        query: {
-          id: this.id,
-          title: this.title,
-        },
-      });
+    editButton() {
+      if (localStorage.getItem("token") == null) {
+        alert("Please login first");
+        this.$router.push("/login");
+      } else {
+        this.$router.push({
+          path: "/edititem",
+          query: {
+            id: this.id,
+            title: this.title,
+          },
+        });
+      }
+    },
+    removeButton() {
+      if (localStorage.getItem("token") == null) {
+        alert("Please login first");
+        this.$router.push("/login");
+      } else {
+        this.$store.dispatch("removeItem", this.id);
+      }
     },
   },
 };
 </script>
 
 <style>
+.product {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.product_title {
+  text-align: left;
+}
+
+.product_author {
+  text-align: left;
+  font-style: italic;
+}
+
+.product_description {
+  text-align: left;
+}
 .news {
   margin-top: 10px;
   margin-left: 220px;
