@@ -49,6 +49,10 @@ export default new Vuex.Store({
       state.authenticated = false;
       this.$router.replace("/login");
     },
+    deleteNews(state, id) {
+      var news1 = state.news.filter((news) => news.id !== id);
+      state.news.splice(news1, 1);
+    },
   },
   getters: {
     newsDetails(state) {

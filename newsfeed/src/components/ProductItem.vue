@@ -11,7 +11,7 @@
         <p>{{ data.description }}</p>
       </div>
       <button class="btn btn-success" @click="editButton">Edit</button>
-      <button class="btn btn-danger" @click="removeButton">Remove</button>
+      <button class="btn btn-danger" @click="deleteEvent()">Remove</button>
     </b-card>
   </div>
 </template>
@@ -20,9 +20,6 @@
 export default {
   props: ["id", "title", "author", "description", "searchTxt"],
   computed: {
-    // dataArray() {
-    //   return this.$store.getters.newsDetails;
-    // },
     filterproduct() {
       if (!this.searchTxt) {
         return this.$store.getters.newsDetails;
@@ -47,13 +44,8 @@ export default {
         });
       }
     },
-    removeButton() {
-      if (localStorage.getItem("token") == null) {
-        alert("Please login first");
-        this.$router.push("/login");
-      } else {
-        this.$store.dispatch("removeItem", this.id);
-      }
+    deleteEvent() {
+      this.$store.commit("deleteNews");
     },
   },
 };
