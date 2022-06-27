@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <b-navbar toggleable="lg" type="light" variant="warning">
+    <b-navbar toggleable="lg" type="light" variant="warning" fixed="top">
       <b-navbar-brand href="/" class="dataname"> Newsfeed</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -31,7 +31,7 @@ export default {
       },
     };
   },
-  OnMounted() {
+  onMounted() {
     if (!this.authenticated) {
       this.$router.push({ name: "Login" });
     }

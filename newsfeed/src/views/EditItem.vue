@@ -1,16 +1,16 @@
 <template>
   <div class="edititem">
-    <h3>New Data Input</h3>
+    <h3>Edit Data Inputed</h3>
     <b-card class="editcard">
-      <div class="product_title">
+      <div class="product_titles">
         <b>Title : </b>
         <input type="text" />
       </div>
-      <div class="product_author">
+      <div class="product_authors">
         <b>Author : </b>
         <input type="text" />
       </div>
-      <div class="product_details">
+      <div class="product_detail">
         <b>Description : </b>
         <input type="text" />
       </div>
@@ -35,16 +35,19 @@ export default {
   margin-left: 400px;
 }
 
-.product_title {
+.product_titles {
   margin-top: 20px;
   margin-left: 50px;
 }
-.product_author {
+.product_authors {
   margin-top: 20px;
   margin-left: 30px;
   margin-bottom: 20px;
 }
-
+.product_detail {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 .btn {
   margin-top: 30px;
 }

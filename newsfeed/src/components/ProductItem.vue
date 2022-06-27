@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <b-card class="product" v-for="data in dataArray" :key="data.id">
+    <b-card class="product" v-for="data in filterproduct" :key="data.id">
       <div class="product_title">
         <h2>{{ data.title }}</h2>
       </div>
@@ -18,10 +18,22 @@
 
 <script>
 export default {
-  props: ["id", "title", "author", "description"],
+  props: ["id", "title", "author", "description", "searchTxt"],
   computed: {
-    dataArray() {
-      return this.$store.getters.newsDetails;
+    // dataArray() {
+    //   return this.$store.getters.newsDetails;
+    // },
+    filterproduct() {
+      if (!this.searchTxt) {
+        return this.$store.getters.newsDetails;
+      } else {
+        let tempData = this.$store.getters.newsDetails.filter((product) => {
+          return product.title
+            .toLowerCase()
+            .includes(this.searchTxt.toLowerCase());
+        });
+        return tempData;
+      }
     },
   },
   methods: {
@@ -32,10 +44,6 @@ export default {
       } else {
         this.$router.push({
           path: "/edititem",
-          query: {
-            id: this.id,
-            title: this.title,
-          },
         });
       }
     },

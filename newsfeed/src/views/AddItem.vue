@@ -2,17 +2,17 @@
   <div class="newitem">
     <h3>New Data Input</h3>
     <b-card class="newcard">
-      <div class="product_title">
+      <div class="product_titles">
         <b>Title : </b>
-        <input type="text" />
+        <input type="text" v-model="title" />
       </div>
-      <div class="product_author">
+      <div class="product_authors">
         <b>Author : </b>
-        <input type="text" />
+        <input type="text" v-model="author" />
       </div>
-      <div class="product_details">
+      <div class="product_detail">
         <b>Description : </b>
-        <input type="text" />
+        <input type="text" v-model="description" />
       </div>
       <button class="btn btn-success" @click="addData">Submit</button>
     </b-card>
@@ -21,11 +21,24 @@
 
 <script>
 export default {
+  data() {
+    return {
+      title: "",
+      author: "",
+      description: "",
+    };
+  },
   methods: {
     addData() {
-      //   let newData = {
-      //     title: this.$refs.title.value,
-      //   };
+      if (this.title == "" || this.author == "" || this.description == "") {
+        alert("Please fill all the fields");
+      } else {
+        this.$store.dispatch("addItem", {
+          title: this.title,
+          author: this.author,
+          description: this.description,
+        });
+      }
     },
   },
 };
@@ -39,13 +52,17 @@ export default {
   margin-left: 400px;
 }
 
-.product_title {
+.product_titles {
   margin-top: 20px;
   margin-left: 50px;
 }
-.product_author {
+.product_authors {
   margin-top: 20px;
   margin-left: 30px;
+  margin-bottom: 20px;
+}
+.product_detail {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 

@@ -9,9 +9,6 @@
             placeholder="Search..."
             v-model.trim="query"
           >
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-              >Search</b-button
-            >
           </b-form-input>
           <div class="add_item">
             <router-link to="/additem" class="item" @click="verifyLogin"
@@ -36,7 +33,7 @@
       </b-nav-form>
     </b-nav>
     <div class="Data">
-      <productitem></productitem>
+      <productitem :searchTxt="query"></productitem>
     </div>
   </div>
 </template>
@@ -52,18 +49,15 @@ export default {
   components: {
     productitem,
   },
-  computed: {
-    filterproduct() {
-      return this.$store.getters.newsDetails.filter((product) => {
-        return product.title.toLowerCase().includes(this.search.toLowerCase());
-      });
-    },
-  },
   methods: {
     verifyLogin() {
       if (localStorage.getItem("token") == null) {
         alert("Please login first");
         this.$router.push("/login");
+      } else {
+        this.$router.push({
+          path: "/additem",
+        });
       }
     },
   },
@@ -76,7 +70,7 @@ export default {
 }
 .mr-sm-2 {
   margin-left: 235px;
-  margin-top: 20px;
+  margin-top: 50px;
   justify-content: center;
   display: flex;
 }
@@ -92,7 +86,7 @@ export default {
   margin-left: 50px;
   justify-content: center;
   width: 80%;
-  margin-top: 25px;
+  margin-top: 55px;
 }
 
 .Data {
@@ -100,7 +94,7 @@ export default {
 }
 
 .dropdown {
-  margin-top: 10px;
+  margin-top: 40px;
   justify-content: center;
   display: flex;
   color: #000;
@@ -117,6 +111,6 @@ export default {
 
 .btn {
   margin-left: 50px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 </style>
