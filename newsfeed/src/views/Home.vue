@@ -10,10 +10,8 @@
             v-model.trim="query"
           >
           </b-form-input>
-          <div class="add_item">
-            <router-link to="/additem" class="item" @click="verifyLogin"
-              >Add Item</router-link
-            >
+          <div class="add_item" @click="verifyLogin">
+            <router-link to="/additem" class="item">Add Item</router-link>
           </div>
           <div class="drop1">
             <b-nav-item-dropdown text="Sort By" class="sorting">
@@ -51,13 +49,13 @@ export default {
   },
   methods: {
     verifyLogin() {
-      if (localStorage.getItem("token") == null) {
-        alert("Please login first");
-        this.$router.push("/login");
-      } else {
+      // console.log(this.$store.getters.isLogin);
+      if (this.$store.getters.isLogin) {
         this.$router.push({
           path: "/additem",
         });
+      } else {
+        this.$router.push({ path: "/login" });
       }
     },
   },

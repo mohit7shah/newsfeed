@@ -11,7 +11,11 @@
           <router-link to="/about" class="menu">About</router-link>
           <router-link to="/careers" class="menu">Careers</router-link>
           <router-link to="/contact" class="menu">Contact</router-link>
-          <router-link v-if="authenticated" to="/login" class="menu"
+          <router-link
+            v-if="isLoginFun"
+            to="/login"
+            class="menu"
+            @click="logout"
             >Logout</router-link
           >
         </b-nav>
@@ -31,21 +35,18 @@ export default {
       },
     };
   },
-  onMounted() {
-    if (!this.authenticated) {
-      this.$router.push({ name: "Login" });
-    }
+  computed: {
+    isLoginFun() {
+      console.log(this.$store.getters.isLogin);
+      return this.$store.getters.isLogin;
+    },
   },
   methods: {
-    auth() {
-      this.$store.commit("logout");
-    },
-
     setAuthenticated(status) {
       this.authenticated = status;
     },
     logout() {
-      this.authenticated = false;
+      this.$store.commit("logout");
     },
   },
 };

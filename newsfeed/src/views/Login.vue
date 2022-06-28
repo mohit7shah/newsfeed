@@ -33,8 +33,10 @@ export default {
           this.input.password == this.$parent.mockAccount.password
         ) {
           this.$emit("authenticated", true);
+          this.$store.commit("login");
           this.$router.replace({ path: "/" });
         } else {
+          alert("error in login");
           console.log("The username and password is incorrect");
         }
       } else {

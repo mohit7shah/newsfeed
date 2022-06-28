@@ -35,17 +35,23 @@ export default {
   },
   methods: {
     editButton() {
-      if (localStorage.getItem("token") == null) {
-        alert("Please login first");
-        this.$router.push("/login");
-      } else {
+      console.log(this.$store.getters.isLogin);
+      if (this.$store.getters.isLogin) {
         this.$router.push({
           path: "/edititem",
         });
+      } else {
+        this.$router.push({ path: "/login" });
       }
     },
     deleteEvent() {
-      this.$store.commit("deleteNews");
+      // console.log(this.$store.getters.isLogin);
+      if (this.$store.getters.isLogin) {
+        this.$store.commit("deleteNews");
+      } else {
+        alert("Please login first");
+        this.$router.push("/login");
+      }
     },
   },
 };
