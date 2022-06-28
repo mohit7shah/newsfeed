@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     authenticated: false,
+    newDatarray: {},
     news: [
       {
         id: "n1",
@@ -45,17 +46,28 @@ export default new Vuex.Store({
       },
     ],
   },
+  actions: {},
   mutations: {
     logout(state) {
       state.authenticated = false;
     },
     deleteNews(state, id) {
+      console.log(id);
       var news1 = state.news.filter((news) => news.id !== id);
       state.news.splice(news1, 1);
     },
     login(state) {
       state.authenticated = true;
     },
+    additem(state, payload) {
+      state.newDatarray = payload;
+    },
+    // setId(state, id) {
+    //   if (state.id === id) {
+    //     console.log(id);
+    //     state.news;
+    //   }
+    // },
   },
   getters: {
     newsDetails(state) {
@@ -63,6 +75,9 @@ export default new Vuex.Store({
     },
     isLogin(state) {
       return state.authenticated;
+    },
+    newData(state) {
+      return state.newDatarray;
     },
   },
 });

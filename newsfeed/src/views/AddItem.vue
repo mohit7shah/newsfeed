@@ -34,6 +34,7 @@ export default {
         alert("Please fill all the fields");
       } else {
         this.$store.dispatch("addItem", {
+          id: this.id,
           title: this.title,
           author: this.author,
           description: this.description,

@@ -11,7 +11,7 @@
         <p>{{ data.description }}</p>
       </div>
       <button class="btn btn-success" @click="editButton">Edit</button>
-      <button class="btn btn-danger" @click="deleteEvent()">Remove</button>
+      <button class="btn btn-danger" @click="deleteEvent">Remove</button>
     </b-card>
   </div>
 </template>
@@ -35,11 +35,11 @@ export default {
   },
   methods: {
     editButton() {
-      // console.log(this.$store.getters.isLogin);
       if (this.$store.getters.isLogin) {
         this.$router.push({
           path: "/edititem",
         });
+        this.$store.commit("setId", this.id);
       } else {
         this.$router.push({ path: "/login" });
       }
