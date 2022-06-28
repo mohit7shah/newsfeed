@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     editButton() {
-      console.log(this.$store.getters.isLogin);
+      // console.log(this.$store.getters.isLogin);
       if (this.$store.getters.isLogin) {
         this.$router.push({
           path: "/edititem",
