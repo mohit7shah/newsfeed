@@ -15,7 +15,7 @@
           </div>
           <div class="drop1">
             <b-nav-item-dropdown text="Sort By" class="sorting">
-              <b-dropdown-item @click="sortbyTitle">Title</b-dropdown-item>
+              <b-dropdown-item>Title</b-dropdown-item>
               <b-dropdown-item>Body</b-dropdown-item>
               <b-dropdown-item>Author</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -48,17 +48,17 @@ export default {
     productitem,
   },
   computed: {
-    sortbyTitle() {
-      this.$store.getters.newsDetails.sort((a, b) => {
-        if (a.title < b.title) {
-          return -1;
-        }
-        if (a.title > b.title) {
-          return 1;
-        }
-        return 0;
-      });
-    },
+    // sortbyTitle() {
+    //   this.$store.getters.newsDetails.sort((a, b) => {
+    //     if (a.title < b.title) {
+    //       return -1;
+    //     }
+    //     if (a.title > b.title) {
+    //       return 1;
+    //     }
+    //     return 0;
+    //   });
+    // },
   },
   methods: {
     verifyLogin() {

@@ -53,8 +53,7 @@ export default new Vuex.Store({
     },
     deleteNews(state, id) {
       console.log(id);
-      var news1 = state.news.filter((news) => news.id !== id);
-      state.news.splice(news1, 1);
+      state.news.splice(id, 1);
     },
     login(state) {
       state.authenticated = true;
@@ -62,12 +61,12 @@ export default new Vuex.Store({
     additem(state, payload) {
       state.newDatarray = payload;
     },
-    // setId(state, id) {
-    //   if (state.id === id) {
-    //     console.log(id);
-    //     state.news;
-    //   }
-    // },
+    setId(state, id) {
+      if (state.id === id) {
+        console.log(id);
+        // filter, store, mutation, action
+      }
+    },
   },
   getters: {
     newsDetails(state) {

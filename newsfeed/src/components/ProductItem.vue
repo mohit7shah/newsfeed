@@ -1,6 +1,10 @@
 <template>
   <div class="news">
-    <b-card class="product" v-for="data in filterproduct" :key="data.id">
+    <b-card
+      class="product"
+      v-for="(data, index) in filterproduct"
+      :key="data.id"
+    >
       <div class="product_title">
         <h2>{{ data.title }}</h2>
       </div>
@@ -10,8 +14,8 @@
       <div class="product_description">
         <p>{{ data.description }}</p>
       </div>
-      <button class="btn btn-success" @click="editButton">Edit</button>
-      <button class="btn btn-danger" @click="deleteEvent">Remove</button>
+      <button class="btn btn-success" @click="editButton(index)">Edit</button>
+      <button class="btn btn-danger" @click="deleteEvent(index)">Remove</button>
     </b-card>
   </div>
 </template>
@@ -34,20 +38,22 @@ export default {
     },
   },
   methods: {
-    editButton() {
+    editButton(id) {
       if (this.$store.getters.isLogin) {
         this.$router.push({
           path: "/edititem",
         });
-        this.$store.commit("setId", this.id);
+        // console.log(id);
+        this.$store.commit("setId", id);
       } else {
         this.$router.push({ path: "/login" });
       }
     },
-    deleteEvent() {
-      // console.log(this.$store.getters.isLogin);
+    deleteEvent(id) {
+      // console.log(id);
       if (this.$store.getters.isLogin) {
-        this.$store.commit("deleteNews");
+        this.$store.commit("deleteNews", id);
+        // console.log(id);
       } else {
         alert("Please login first");
         this.$router.push("/login");
