@@ -45,14 +45,6 @@ export default new Vuex.Store({
       },
     ],
   },
-  actions: {
-    // addItem(state, news) {
-    //   console.log(news);
-    //   state.news.push(news);
-    //   // commit("addNews", news);
-    //   // this.$router.push({ path: "/" });
-    // },
-  },
   mutations: {
     addItem(state, news) {
       console.log(news);
@@ -70,9 +62,10 @@ export default new Vuex.Store({
       state.authenticated = true;
     },
     setId(state, id) {
-      if (state.id === id) {
-        console.log(id);
-      }
+      console.log(id);
+      state.id = id;
+      // if (state.id === id) {
+      // }
     },
   },
   getters: {
@@ -82,8 +75,8 @@ export default new Vuex.Store({
     isLogin(state) {
       return state.authenticated;
     },
-    newData(state) {
-      return state.newData;
-    },
+    // newData(state) {
+    //   return state.news;
+    // },
   },
 });
