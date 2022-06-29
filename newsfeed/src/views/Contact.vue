@@ -34,10 +34,14 @@
       </b-form-group>
       <b-form-group id="input-group-4">
         <b-form-checkbox-group v-model="form.checked" id="checkbox">
-          <b-form-checkbox value="me">Do you want any updates?</b-form-checkbox>
+          <b-form-checkbox value="me" class="empty">
+            Do you want any updates?</b-form-checkbox
+          >
         </b-form-checkbox-group>
       </b-form-group>
-      <b-button type="submit" class="btn btn-success">Subscribe</b-button>
+      <b-button type="submit" class="btn btn-success" @click="onsubmit"
+        >Subscribe</b-button
+      >
     </b-card>
   </div>
 </template>
@@ -55,25 +59,31 @@ export default {
     };
   },
   methods: {
-    onsubmit(event) {
-      event.preventDefault();
-      alert(JSON.stringify(this.form));
+    onsubmit() {
+      alert("Subscribed");
     },
   },
 };
 </script>
 
 <style scoped>
+.contact {
+  margin-top: 90px;
+  text-align: center;
+  width: 50%;
+  margin-left: 400px;
+}
 .data {
   padding-top: 20px;
   margin: auto;
   border: 1rem bold black;
   display: block;
-  height: 350px;
+  height: 370px;
   width: 400px;
 }
 
 .btn {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-left: 10px;
 }
 </style>
