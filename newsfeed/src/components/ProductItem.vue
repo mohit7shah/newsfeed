@@ -14,16 +14,29 @@
       <div class="product_description">
         <p>{{ data.description }}</p>
       </div>
-      <button class="btn btn-success" @click="editButton(index)">Edit</button>
-      <button class="btn btn-danger" @click="deleteEvent(index)">Remove</button>
+      <button v-if="hide" class="btn btn-success" @click="editButton(index)">
+        Edit
+      </button>
+      <button v-if="hide" class="btn btn-danger" @click="deleteEvent(index)">
+        Remove
+      </button>
     </b-card>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      hidebutton: null,
+    };
+  },
   props: ["id", "title", "author", "description", "searchTxt"],
   computed: {
+    hide() {
+      return this.$store.getters.isLogin;
+      // return this.hidebutton;
+    },
     filterproduct() {
       if (!this.searchTxt) {
         return this.$store.getters.newsDetails;

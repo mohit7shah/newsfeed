@@ -6,7 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     authenticated: false,
-    newDatarray: {},
     news: [
       {
         id: "n1",
@@ -34,7 +33,7 @@ export default new Vuex.Store({
         title: "Supra the boss of the world!",
         author: "Vivek Shah",
         description:
-          "These immensely powerful cars use the 6.2-liter Hemi V8 engine that produces 717 hp in the Hellcat and 808 hp in the SRT Demon, so the Demon is much faster than the Hellcat.",
+          "Immensely powerful cars use the 6.2-liter Hemi V8 engine that produces 717 hp in the Hellcat and 808 hp in the SRT Demon, so the Demon is much faster than the Hellcat.",
       },
 
       {
@@ -46,8 +45,20 @@ export default new Vuex.Store({
       },
     ],
   },
-  actions: {},
+  actions: {
+    // addItem(state, news) {
+    //   console.log(news);
+    //   state.news.push(news);
+    //   // commit("addNews", news);
+    //   // this.$router.push({ path: "/" });
+    // },
+  },
   mutations: {
+    addItem(state, news) {
+      console.log(news);
+      state.news.push(news);
+      // commit("addNews", news);
+    },
     logout(state) {
       state.authenticated = false;
     },
@@ -58,13 +69,9 @@ export default new Vuex.Store({
     login(state) {
       state.authenticated = true;
     },
-    additem(state, payload) {
-      state.newDatarray = payload;
-    },
     setId(state, id) {
       if (state.id === id) {
         console.log(id);
-        // filter, store, mutation, action
       }
     },
   },
@@ -76,7 +83,7 @@ export default new Vuex.Store({
       return state.authenticated;
     },
     newData(state) {
-      return state.newDatarray;
+      return state.newData;
     },
   },
 });

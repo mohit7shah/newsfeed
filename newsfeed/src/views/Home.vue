@@ -15,9 +15,9 @@
           </div>
           <div class="drop1">
             <b-nav-item-dropdown text="Sort By" class="sorting">
-              <b-dropdown-item>Title</b-dropdown-item>
-              <b-dropdown-item>Body</b-dropdown-item>
-              <b-dropdown-item>Author</b-dropdown-item>
+              <b-dropdown-item @click="sortbyTitle">Title</b-dropdown-item>
+              <b-dropdown-item @click="sortbybody">Body</b-dropdown-item>
+              <b-dropdown-item @click="sortbyauthor">Author</b-dropdown-item>
             </b-nav-item-dropdown>
           </div>
           <div class="drop2">
@@ -26,7 +26,9 @@
               <b-dropdown-item>Desending</b-dropdown-item>
             </b-nav-item-dropdown>
           </div>
-          <router-link to="/login" class="btn btn-success">Login</router-link>
+          <router-link to="/login" class="btn btn-success" v-if="!hide"
+            >Login</router-link
+          >
         </div>
       </b-nav-form>
     </b-nav>
@@ -48,19 +50,45 @@ export default {
     productitem,
   },
   computed: {
-    // sortbyTitle() {
-    //   this.$store.getters.newsDetails.sort((a, b) => {
-    //     if (a.title < b.title) {
-    //       return -1;
-    //     }
-    //     if (a.title > b.title) {
-    //       return 1;
-    //     }
-    //     return 0;
-    //   });
-    // },
+    hide() {
+      return this.$store.getters.isLogin;
+      // return this.hidebutton;
+    },
   },
   methods: {
+    sortbyTitle() {
+      this.$store.getters.newsDetails.sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        // if (a.title > b.title) {
+        //   return 1;
+        // }
+        return 0;
+      });
+    },
+    sortbybody() {
+      this.$store.getters.newsDetails.sort((a, b) => {
+        if (a.description < b.description) {
+          return -1;
+        }
+        // if (a.description > b.description) {
+        //   return 1;
+        // }
+        return 0;
+      });
+    },
+    sortbyauthor() {
+      this.$store.getters.newsDetails.sort((a, b) => {
+        if (a.author < b.author) {
+          return -1;
+        }
+        // if (a.author > b.author) {
+        //   return 1;
+        // }
+        return 0;
+      });
+    },
     verifyLogin() {
       // console.log(this.$store.getters.isLogin);
       if (this.$store.getters.isLogin) {

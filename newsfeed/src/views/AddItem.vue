@@ -33,11 +33,14 @@ export default {
       if (this.title == "" || this.author == "" || this.description == "") {
         alert("Please fill all the fields");
       } else {
-        this.$store.dispatch("addItem", {
+        this.$store.commit("addItem", {
           id: this.id,
           title: this.title,
           author: this.author,
           description: this.description,
+        });
+        this.$router.push({
+          path: "/",
         });
       }
     },
