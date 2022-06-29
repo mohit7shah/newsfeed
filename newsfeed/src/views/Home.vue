@@ -14,17 +14,22 @@
             <router-link to="/additem" class="item">Add Item</router-link>
           </div>
           <div class="drop1">
-            <b-nav-item-dropdown text="Sort By" class="sorting">
-              <b-dropdown-item @click="sortbyTitle">Title</b-dropdown-item>
-              <b-dropdown-item @click="sortbybody">Body</b-dropdown-item>
-              <b-dropdown-item @click="sortbyauthor">Author</b-dropdown-item>
-            </b-nav-item-dropdown>
+            <b-form-select
+              text="Sort By"
+              class="sorting"
+              v-model="sorting_by"
+              :options="option"
+            >
+              <b-form-select-option :value="null"></b-form-select-option>
+              <!-- <b-dropdown-item value="body">Body</b-dropdown-item>
+              <b-dropdown-item value="author">Author</b-dropdown-item> -->
+            </b-form-select>
           </div>
           <div class="drop2">
-            <b-nav-item-dropdown text="Sorting In" class="sorting">
-              <b-dropdown-item>Assending</b-dropdown-item>
-              <b-dropdown-item>Desending</b-dropdown-item>
-            </b-nav-item-dropdown>
+            <b-nav-dropdown text="Sorting In" class="sorting">
+              <b-dropdown-item @click="asc">Assending</b-dropdown-item>
+              <b-dropdown-item @click="desc">Desending</b-dropdown-item>
+            </b-nav-dropdown>
           </div>
           <router-link to="/login" class="btn btn-success" v-if="!hide"
             >Login</router-link
@@ -44,6 +49,25 @@ export default {
   data() {
     return {
       query: "",
+      sorting_by: "",
+      option: [
+        {
+          value: "",
+          text: "Sort By",
+        },
+        {
+          value: "title",
+          text: "Title",
+        },
+        {
+          value: "author",
+          text: "Author",
+        },
+        {
+          value: "description",
+          text: "Description",
+        },
+      ],
     };
   },
   components: {
@@ -52,43 +76,78 @@ export default {
   computed: {
     hide() {
       return this.$store.getters.isLogin;
-      // return this.hidebutton;
     },
   },
   methods: {
-    sortbyTitle() {
-      this.$store.getters.newsDetails.sort((a, b) => {
-        if (a.title < b.title) {
-          return -1;
-        }
-        // if (a.title > b.title) {
-        //   return 1;
-        // }
-        return 0;
-      });
+    asc() {
+      // console.log(this.sorting_by);
+      if (this.sorting_by === "title") {
+        this.$store.getters.newsDetails.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+      }
+      if (this.sorting_by === "author") {
+        this.$store.getters.newsDetails.sort((a, b) =>
+          a.author.localeCompare(b.author)
+        );
+      }
+      if (this.sorting_by === "description") {
+        this.$store.getters.newsDetails.sort((a, b) =>
+          a.description.localeCompare(b.description)
+        );
+      }
     },
-    sortbybody() {
-      this.$store.getters.newsDetails.sort((a, b) => {
-        if (a.description < b.description) {
-          return -1;
-        }
-        // if (a.description > b.description) {
-        //   return 1;
-        // }
-        return 0;
-      });
+    desc() {
+      // console.log(this.sorting_by);
+      if (this.sorting_by === "title") {
+        this.$store.getters.newsDetails.sort((a, b) =>
+          b.title.localeCompare(a.title)
+        );
+      }
+      if (this.sorting_by === "author") {
+        this.$store.getters.newsDetails.sort((a, b) =>
+          b.author.localeCompare(a.author)
+        );
+      }
+      if (this.sorting_by === "description") {
+        this.$store.getters.newsDetails.sort((a, b) =>
+          b.description.localeCompare(a.description)
+        );
+      }
     },
-    sortbyauthor() {
-      this.$store.getters.newsDetails.sort((a, b) => {
-        if (a.author < b.author) {
-          return -1;
-        }
-        // if (a.author > b.author) {
-        //   return 1;
-        // }
-        return 0;
-      });
-    },
+    // sortbyTitle() {
+    //   this.$store.getters.newsDetails.sort((a, b) => {
+    //     if (a.title > b.title) {
+    //       return -1;
+    //     }
+    //     if (a.title < b.title) {
+    //       return 1;
+    //     }
+    //     return 0;
+    //   });
+    // },
+    // sortbybody() {
+    //   this.$store.getters.newsDetails.sort((a, b) => {
+    //     if (a.description < b.description) {
+    //       return -1;
+    //     }
+    //     // if (a.description > b.description) {
+    //     //   return 1;
+    //     // }
+    //     return 0;
+    //   });
+    // },
+    // sortbyauthor() {
+    //   this.$store.getters.newsDetails.sort((a, b) => {
+    //     if (a.author < b.author) {
+    //       return -1;
+    //     }
+    //     // if (a.author > b.author) {
+    //     //   return 1;
+    //     // }
+    //     return 0;
+    //   });
+    // },
     verifyLogin() {
       // console.log(this.$store.getters.isLogin);
       if (this.$store.getters.isLogin) {
@@ -105,7 +164,9 @@ export default {
 
 <style scoped>
 .sorting {
+  margin-top: 50px;
   color: #000;
+  border: none;
 }
 .mr-sm-2 {
   margin-left: 235px;

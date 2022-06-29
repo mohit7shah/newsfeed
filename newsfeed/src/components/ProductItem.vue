@@ -26,16 +26,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      hidebutton: null,
-    };
-  },
   props: ["id", "title", "author", "description", "searchTxt"],
   computed: {
     hide() {
       return this.$store.getters.isLogin;
-      // return this.hidebutton;
     },
     filterproduct() {
       if (!this.searchTxt) {
