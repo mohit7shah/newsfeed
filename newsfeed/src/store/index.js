@@ -63,7 +63,6 @@ export default new Vuex.Store({
     },
     setId(state, id) {
       console.log(id);
-      state.id = id;
       // if (state.id === id) {
       // }
     },
