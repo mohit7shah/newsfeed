@@ -1,7 +1,7 @@
 <template>
   <div class="careers">
     <img
-      src="../assets/download.jpeg"
+      src="../assets/careers.jpg"
       alt="Image Career motivation"
       class="image"
     />
