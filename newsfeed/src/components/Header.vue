@@ -18,6 +18,13 @@
             @click="logout"
             >Logout</router-link
           >
+          <router-link
+            v-if="!isLoginFun"
+            to="/login"
+            class="menu"
+            @click="logout"
+            >Login</router-link
+          >
         </b-nav>
       </b-collapse>
     </b-navbar>

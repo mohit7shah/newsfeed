@@ -31,9 +31,9 @@
               <b-dropdown-item @click="desc">Desending</b-dropdown-item>
             </b-nav-dropdown>
           </div>
-          <router-link to="/login" class="btn btn-success" v-if="!hide"
+          <!-- <router-link to="/login" class="btn btn-success" v-if="!hide"
             >Login</router-link
-          >
+          > -->
         </div>
       </b-nav-form>
     </b-nav>
@@ -73,11 +73,11 @@ export default {
   components: {
     productitem,
   },
-  computed: {
-    hide() {
-      return this.$store.getters.isLogin;
-    },
-  },
+  // computed: {
+  //   hide() {
+  //     return this.$store.getters.isLogin;
+  //   },
+  // },
   methods: {
     asc() {
       // console.log(this.sorting_by);
