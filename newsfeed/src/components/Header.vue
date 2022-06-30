@@ -59,6 +59,7 @@ export default {
 
 .dataname {
   margin-left: 15px;
+  display: flex;
 }
 .menu {
   text-decoration: none;

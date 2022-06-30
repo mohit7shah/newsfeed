@@ -115,39 +115,6 @@ export default {
         );
       }
     },
-    // sortbyTitle() {
-    //   this.$store.getters.newsDetails.sort((a, b) => {
-    //     if (a.title > b.title) {
-    //       return -1;
-    //     }
-    //     if (a.title < b.title) {
-    //       return 1;
-    //     }
-    //     return 0;
-    //   });
-    // },
-    // sortbybody() {
-    //   this.$store.getters.newsDetails.sort((a, b) => {
-    //     if (a.description < b.description) {
-    //       return -1;
-    //     }
-    //     // if (a.description > b.description) {
-    //     //   return 1;
-    //     // }
-    //     return 0;
-    //   });
-    // },
-    // sortbyauthor() {
-    //   this.$store.getters.newsDetails.sort((a, b) => {
-    //     if (a.author < b.author) {
-    //       return -1;
-    //     }
-    //     // if (a.author > b.author) {
-    //     //   return 1;
-    //     // }
-    //     return 0;
-    //   });
-    // },
     verifyLogin() {
       // console.log(this.$store.getters.isLogin);
       if (this.$store.getters.isLogin) {
