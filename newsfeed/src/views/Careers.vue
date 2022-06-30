@@ -1,7 +1,7 @@
 <template>
   <div class="careers">
     <img
-      src="../assets/careers.jpg"
+      src="../assets/career.jpg"
       alt="Image Career motivation"
       class="image"
     />
@@ -13,7 +13,7 @@
 <style scoped>
 .image {
   background-repeat: no-repeat;
-  height: 650px;
+  height: 100%;
   background-position: center;
   width: 100%;
 }
