@@ -14,7 +14,7 @@
       <div class="product_description">
         <p>{{ data.description }}</p>
       </div>
-      <button v-if="hide" class="btn btn-success" @click="editButton(index)">
+      <button v-if="hide" class="btn btn-success" @click="editButton(data.id)">
         Edit
       </button>
       <button v-if="hide" class="btn btn-danger" @click="deleteEvent(index)">
@@ -50,7 +50,7 @@ export default {
         this.$router.push({
           path: "/edititem",
         });
-        // console.log(id);
+        console.log("product" + id);
         this.$store.commit("setId", id);
       } else {
         this.$router.push({ path: "/login" });

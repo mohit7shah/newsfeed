@@ -4,15 +4,15 @@
     <b-card class="editcard">
       <div class="product_titles">
         <b>Title : </b>
-        <input type="text" />
+        <input type="text" v-model="newsData.title" />
       </div>
       <div class="product_authors">
         <b>Author : </b>
-        <input type="text" />
+        <input type="text" v-model="newsData.author" />
       </div>
       <div class="product_detail">
         <b>Description : </b>
-        <input type="text" />
+        <input type="text" v-model="newsData.description" />
       </div>
       <button class="btn btn-success" @click="editData">Submit</button>
     </b-card>
@@ -21,8 +21,40 @@
 
 <script>
 export default {
+  data() {
+    return {
+      newsData: {},
+    };
+  },
   methods: {
-    editData() {},
+    editData() {
+      if (
+        this.newsData.title == "" ||
+        this.newsData.author == "" ||
+        this.newsData.description == ""
+      ) {
+        alert("Please fill all the fields");
+      } else {
+        // console.log(this.newsData);
+        this.$store.commit("editItem", {
+          id: this.newsData.id,
+          title: this.newsData.title,
+        });
+        this.$router.push({
+          path: "/",
+        });
+      }
+    },
+  },
+  created() {
+    let data = this.$store.getters["newsDetails"];
+    let id = this.$store.getters["newsId"];
+
+    data.forEach((item) => {
+      if (item.id == id) {
+        this.newsData = item;
+      }
+    });
   },
 };
 </script>

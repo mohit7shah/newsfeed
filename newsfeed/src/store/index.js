@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     authenticated: false,
+    id: "",
     news: [
       {
         id: "n1",
@@ -62,11 +63,15 @@ export default new Vuex.Store({
       state.authenticated = true;
     },
     setId(state, id) {
-      console.log(id);
-      // if (state.id === id) {
-      // }
+      // console.log("store" + id);
+      state.id = id;
+    },
+    editItem(state, news) {
+      // console.log(news);
+      state.news[news.id] = news;
     },
   },
+  actions: {},
   getters: {
     newsDetails(state) {
       return state.news;
@@ -74,8 +79,8 @@ export default new Vuex.Store({
     isLogin(state) {
       return state.authenticated;
     },
-    // newData(state) {
-    //   return state.news;
-    // },
+    newsId(state) {
+      return state.id;
+    },
   },
 });
