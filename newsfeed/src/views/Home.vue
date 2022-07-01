@@ -132,7 +132,7 @@ export default {
 <style scoped>
 .sorting {
   margin-top: 50px;
-  color: #000;
+  color: black;
   border: none;
 }
 .mr-sm-2 {
