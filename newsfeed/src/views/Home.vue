@@ -21,8 +21,6 @@
               :options="option"
             >
               <b-form-select-option :value="null"></b-form-select-option>
-              <!-- <b-dropdown-item value="body">Body</b-dropdown-item>
-              <b-dropdown-item value="author">Author</b-dropdown-item> -->
             </b-form-select>
           </div>
           <div class="drop2">
