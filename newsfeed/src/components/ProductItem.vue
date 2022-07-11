@@ -25,8 +25,14 @@
 </template>
 
 <script>
+// import axios from "axios";
 export default {
   props: ["id", "title", "author", "description", "searchTxt"],
+
+  mounted() {
+    this.$store.dispatch("getProducts");
+  },
+
   computed: {
     hide() {
       return this.$store.getters.isLogin;

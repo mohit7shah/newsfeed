@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -70,8 +71,23 @@ export default new Vuex.Store({
       // console.log(news);
       state.news[news.id] = news;
     },
+    setProduct(state, news) {
+      state.news = state.news.concat(news);
+    },
   },
-  actions: {},
+  actions: {
+    getProducts({ commit }) {
+      axios
+        .get(
+          "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=d8fe6a83554f47b2852cbf2a25489f58"
+        )
+        .then((response) => {
+          // console.log(response.data.articles);
+          commit("setProduct", response.data.articles);
+        });
+    },
+  },
+
   getters: {
     newsDetails(state) {
       return state.news;
