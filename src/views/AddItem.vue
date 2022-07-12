@@ -44,6 +44,7 @@ export default {
           author: this.author,
           description: this.description,
         });
+        alert("Data added successfully");
         this.$router.push({
           path: "/",
         });
