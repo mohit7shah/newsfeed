@@ -57,6 +57,7 @@ export default {
   methods: {
     editButton(id) {
       if (this.$store.getters.isLogin) {
+        // alert("Are you sure you want to edit this data?");
         this.$router.push({
           path: "/edititem",
         });
