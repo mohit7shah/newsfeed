@@ -69,10 +69,10 @@ export default {
     deleteEvent(id) {
       // console.log(id);
       if (this.$store.getters.isLogin) {
+        alert("Are you sure you want to delete this item?");
         this.$store.commit("deleteNews", id);
         // console.log(id);
       } else {
-        alert("Please login first");
         this.$router.push("/login");
       }
     },

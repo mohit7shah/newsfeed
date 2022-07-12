@@ -119,6 +119,7 @@ export default {
           path: "/additem",
         });
       } else {
+        alert("Please Login First");
         this.$router.push({ path: "/login" });
       }
     },
