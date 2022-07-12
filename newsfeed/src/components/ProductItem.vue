@@ -14,12 +14,16 @@
       <div class="product_description">
         <p>{{ data.description }}</p>
       </div>
-      <button v-if="hide" class="btn btn-success" @click="editButton(data.id)">
+      <b-button
+        v-if="hide"
+        class="btn btn-success"
+        @click="editButton(data.id)"
+      >
         Edit
-      </button>
-      <button v-if="hide" class="btn btn-danger" @click="deleteEvent(index)">
+      </b-button>
+      <b-button v-if="hide" class="btn btn-danger" @click="deleteEvent(index)">
         Remove
-      </button>
+      </b-button>
     </b-card>
   </div>
 </template>

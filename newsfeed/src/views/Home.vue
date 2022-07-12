@@ -11,7 +11,7 @@
           >
           </b-form-input>
           <div class="add_item" @click="verifyLogin">
-            <router-link to="/additem" class="item">Add Item</router-link>
+            <b-button to="/additem" class="item btn-info">AddItem</b-button>
           </div>
           <div class="drop1">
             <b-form-select
@@ -20,7 +20,6 @@
               v-model="sorting_by"
               :options="option"
             >
-              <b-form-select-option :value="null"></b-form-select-option>
             </b-form-select>
           </div>
           <div class="drop2">
@@ -151,7 +150,6 @@ export default {
   margin-left: 50px;
   justify-content: center;
   width: 80%;
-  margin-top: 55px;
 }
 
 .Data {

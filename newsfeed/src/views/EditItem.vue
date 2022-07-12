@@ -12,7 +12,12 @@
       </div>
       <div class="product_detail">
         <b>Description : </b>
-        <input type="text" v-model="newsData.description" />
+        <textarea
+          type="text"
+          v-model="newsData.description"
+          rows="4"
+          class="desc"
+        ></textarea>
       </div>
       <button class="btn btn-success" @click="editData">Submit</button>
     </b-card>
@@ -59,7 +64,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .edititem {
   margin-top: 90px;
   text-align: center;
@@ -82,5 +87,9 @@ export default {
 }
 .btn {
   margin-top: 30px;
+}
+
+.desc {
+  width: 26%;
 }
 </style>
