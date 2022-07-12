@@ -45,6 +45,7 @@ export default {
           id: this.newsData.id,
           title: this.newsData.title,
         });
+        alert("Data Updated");
         this.$router.push({
           path: "/",
         });
