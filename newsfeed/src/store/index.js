@@ -79,7 +79,7 @@ export default new Vuex.Store({
     getProducts({ commit }) {
       axios
         .get(
-          "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=d8fe6a83554f47b2852cbf2a25489f58"
+          "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=d8fe6a83554f47b2852cbf2a25489f58"
         )
         .then((response) => {
           // console.log(response.data.articles);
