@@ -53,6 +53,7 @@ export default {
       this.authenticated = status;
     },
     logout() {
+      this.authenticated = false;
       this.$store.commit("logout");
       alert("Logout Successful");
     },

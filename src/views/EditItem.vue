@@ -19,7 +19,7 @@
           class="desc"
         ></textarea>
       </div>
-      <button class="btn btn-success" @click="editData">Submit</button>
+      <b-button class="btn btn-success" @click="editData">Submit</b-button>
     </b-card>
   </div>
 </template>
