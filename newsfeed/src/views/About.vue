@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #about {
   background: lightyellow;
   padding-top: 50px;

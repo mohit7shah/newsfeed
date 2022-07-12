@@ -54,6 +54,7 @@ export default {
     },
     logout() {
       this.$store.commit("logout");
+      alert("Logout Successful");
     },
   },
 };

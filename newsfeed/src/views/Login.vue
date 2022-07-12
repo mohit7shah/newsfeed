@@ -34,6 +34,7 @@ export default {
         ) {
           this.$emit("authenticated", true);
           this.$store.commit("login");
+          alert("Login Successful");
           this.$router.replace({ path: "/" });
         } else {
           alert("error in login");

@@ -60,7 +60,16 @@ export default {
   },
   methods: {
     onsubmit() {
-      alert("Subscribed");
+      if (
+        this.form.email == "" ||
+        this.form.name == "" ||
+        this.form.number == "" ||
+        this.form.checked == ""
+      ) {
+        alert("Please fill all the fields");
+      } else {
+        alert("Subscribed");
+      }
     },
   },
 };
