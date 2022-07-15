@@ -1,21 +1,16 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <p>
-        © Copyright 2022. All Rights Reserved.
-        <i class="material-icons">call</i>
-        +3151244125
-      </p>
-      <!-- <MDBBtn
-        tag="a"
-        color="primary"
-        href="#!"
-        floating
-        size="lg"
-        style="background-color: rgb(172, 43, 172)"
-      >
-        <MDBIcon iconStyle="fab" icon="instagram"></MDBIcon>
-      </MDBBtn> -->
+      <div class="row">
+        <div class="col-md-8">
+          <p>© Copyright 2022. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="material-icons"> mail</i>
+          <i class="material-icons"> phone</i>
+          <i class="material-icons"> chat</i>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
@@ -48,6 +43,8 @@ footer {
 }
 
 .material-icons {
-  font-size: 17px;
+  font-size: 20px;
+  margin-top: 2px;
+  margin-left: 25px;
 }
 </style>

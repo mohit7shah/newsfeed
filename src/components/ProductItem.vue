@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     editButton(id) {
-      if (this.$store.getters.isLogin) {
+      if (localStorage.getItem("isLogin") == "true") {
         // alert("Are you sure you want to edit this data?");
         this.$router.push({
           path: "/edititem",
@@ -73,7 +73,7 @@ export default {
     },
     deleteEvent(id) {
       // console.log(id);
-      if (this.$store.getters.isLogin) {
+      if (localStorage.getItem("isLogin") == "true") {
         alert("Are you sure you want to delete this item?");
         this.$store.commit("deleteNews", id);
         // console.log(id);
@@ -85,10 +85,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .product {
   margin-top: 20px;
   margin-bottom: 30px;
+  border: none !important;
+  box-shadow: grey 0px 0px 5px;
 }
 
 .product_title {
@@ -112,5 +114,9 @@ export default {
 
 .btn-success {
   margin-right: 10px;
+}
+
+.btn {
+  width: 10%;
 }
 </style>

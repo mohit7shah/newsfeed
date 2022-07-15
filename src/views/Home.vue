@@ -114,7 +114,7 @@ export default {
     },
     verifyLogin() {
       // console.log(this.$store.getters.isLogin);
-      if (this.$store.getters.isLogin) {
+      if (localStorage.getItem("isLogin") == "true") {
         this.$router.push({
           path: "/additem",
         });
@@ -145,12 +145,17 @@ export default {
   text-decoration: none;
   text-transform: none;
   color: black;
+  border: none;
+  box-shadow: grey 0px 0px 5px;
 }
 
 .add_item {
   margin-left: 50px;
   justify-content: center;
   width: 80%;
+}
+
+.btn {
 }
 
 .Data {
