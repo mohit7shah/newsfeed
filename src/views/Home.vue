@@ -155,9 +155,6 @@ export default {
   width: 80%;
 }
 
-.btn {
-}
-
 .Data {
   margin: 15px;
 }
