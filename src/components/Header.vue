@@ -11,18 +11,10 @@
           <router-link to="/about" class="menu">About</router-link>
           <router-link to="/careers" class="menu">Careers</router-link>
           <router-link to="/contact" class="menu">Contact</router-link>
-          <router-link
-            v-if="isLoginFun"
-            to="/login"
-            class="menu"
-            @click="logout"
-            >Logout</router-link
-          >
-          <router-link
-            v-if="!isLoginFun"
-            to="/login"
-            class="menu"
-            @click="logout"
+          <div v-if="isLoginFun" class="menu logoutLink" @click="logout">
+            Logout
+          </div>
+          <router-link v-if="!isLoginFun" to="/login" class="menu"
             >Login</router-link
           >
         </b-nav>
@@ -35,7 +27,7 @@
 export default {
   data() {
     return {
-      authenticated: false,
+      authenticated: true,
       mockAccount: {
         username: "admin",
         password: "123456",
@@ -45,7 +37,14 @@ export default {
   computed: {
     isLoginFun() {
       console.log(this.$store.getters.isLogin);
-      return this.$store.getters.isLogin;
+      // return this.$store.getters.isLogin;
+      let isLogin;
+      if (localStorage.getItem("isLogin") == "true") {
+        isLogin = true;
+      } else {
+        isLogin = false;
+      }
+      return isLogin;
     },
   },
   methods: {
@@ -53,15 +52,18 @@ export default {
       this.authenticated = status;
     },
     logout() {
-      this.authenticated = false;
-      this.$store.commit("logout");
+      console.log("hii");
+      // this.authenticated = false;
+      // this.$store.commit("logout");
+      localStorage.setItem("isLogin", "false");
+      this.$router.replace({ path: "/login" });
       alert("Logout Successful");
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 #nav {
   text-align: center;
 }
@@ -74,5 +76,8 @@ export default {
   text-decoration: none;
   margin-left: 15px;
   color: black;
+}
+.logoutLink {
+  cursor: pointer;
 }
 </style>

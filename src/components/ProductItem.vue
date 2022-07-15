@@ -39,7 +39,11 @@ export default {
 
   computed: {
     hide() {
-      return this.$store.getters.isLogin;
+      if (localStorage.getItem("isLogin") == "true") {
+        return true;
+      } else {
+        return false;
+      }
     },
     filterproduct() {
       if (!this.searchTxt) {

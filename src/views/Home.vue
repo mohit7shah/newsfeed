@@ -11,7 +11,7 @@
           >
           </b-form-input>
           <div class="add_item" @click="verifyLogin">
-            <b-button to="/additem" class="item btn-info">AddItem</b-button>
+            <b-button to="/additem" class="item btn-warning">AddItem</b-button>
           </div>
           <div class="drop1">
             <b-form-select
