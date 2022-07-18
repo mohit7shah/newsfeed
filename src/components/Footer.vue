@@ -15,18 +15,6 @@
   </footer>
 </template>
 
-<!-- <script>
-import { MDBBtn, MDBIcon } from "mdb-vue-ui-kit";
-
-export default {
-  name: "App",
-  components: {
-    MDBBtn,
-    MDBIcon,
-  },
-};
-</script> -->
-
 <style scoped>
 footer {
   background: grey;
