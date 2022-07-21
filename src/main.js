@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "../src/router/index.js";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import store from "../src/store";
+import { BAlert } from "bootstrap-vue";
+Vue.component("b-alert", BAlert);
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import "bootstrap/dist/css/bootstrap.css";

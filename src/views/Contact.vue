@@ -77,22 +77,31 @@ export default {
 
 <style scoped>
 .contact {
-  margin-top: 90px;
+  background: url("../assets/subscriptionservice.png");
+  background-size: cover;
   text-align: center;
-  width: 50%;
-  margin-left: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* width: 100vw; */
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .data {
   padding-top: 20px;
-  margin: auto;
-  border: 1rem bold black;
-  display: block;
-  height: 370px;
-  width: 400px;
+  border: none;
+  box-shadow: rgb(4, 4, 4) 0px 0px 10px;
+  background: rgb(256, 256, 256);
+  color: #000;
 }
 
 .btn {
   margin-top: 30px;
   margin-left: 10px;
+}
+
+.text-muted {
+  color: #f5f5f5;
 }
 </style>

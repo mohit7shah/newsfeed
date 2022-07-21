@@ -87,7 +87,7 @@ export default {
 
 <style scoped>
 .product {
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 30px;
   border: none !important;
   box-shadow: grey 0px 0px 5px;
@@ -106,10 +106,11 @@ export default {
   text-align: left;
 }
 .news {
-  margin-top: 10px;
-  margin-left: 220px;
-  width: 70%;
-  margin-bottom: 65px;
+  justify-content: center;
+  align-items: center;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 30px;
 }
 
 .btn-success {
@@ -117,6 +118,6 @@ export default {
 }
 
 .btn {
-  width: 10%;
+  width: 100px;
 }
 </style>

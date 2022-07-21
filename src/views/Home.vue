@@ -1,39 +1,34 @@
 <template>
   <div class="hompage">
-    <b-nav>
-      <b-nav-form>
+    <div>
+      <div class="container">
         <div class="dropdown">
-          <b-form-input
-            size="sm"
-            class="mr-sm-2"
-            placeholder="Search..."
-            v-model.trim="query"
-          >
-          </b-form-input>
-          <div class="add_item" @click="verifyLogin">
-            <b-button to="/additem" class="item btn-warning">AddItem</b-button>
-          </div>
-          <div class="drop1">
+          <div class="sorting">
             <b-form-select
               text="Sort By"
-              class="sorting"
+              class="drop1"
               v-model="sorting_by"
               :options="option"
             >
             </b-form-select>
-          </div>
-          <div class="drop2">
-            <b-nav-dropdown text="Sorting In" class="sorting">
+            <b-nav-dropdown text="Sorting In" class="drop2">
               <b-dropdown-item @click="asc">Assending</b-dropdown-item>
               <b-dropdown-item @click="desc">Desending</b-dropdown-item>
             </b-nav-dropdown>
           </div>
-          <!-- <router-link to="/login" class="btn btn-success" v-if="!hide"
-            >Login</router-link
-          > -->
+          <b-form-input
+            size="sm"
+            class="search"
+            placeholder="Search..."
+            v-model.trim="query"
+          >
+          </b-form-input>
+          <b-button to="/additem" class="item btn-warning" @click="verifyLogin"
+            >AddItem</b-button
+          >
         </div>
-      </b-nav-form>
-    </b-nav>
+      </div>
+    </div>
     <div class="Data">
       <productitem :searchTxt="query"></productitem>
     </div>
@@ -128,55 +123,40 @@ export default {
 </script>
 
 <style scoped>
-.sorting {
-  margin-top: 50px;
-  color: black;
-  border: none;
-}
-.mr-sm-2 {
-  margin-left: 235px;
-  margin-top: 50px;
-  justify-content: center;
-  display: flex;
-}
-
-.item {
-  margin-right: 15px;
-  text-decoration: none;
-  text-transform: none;
-  color: black;
-  border: none;
-  box-shadow: grey 0px 0px 5px;
-}
-
-.add_item {
-  margin-left: 50px;
-  justify-content: center;
-  width: 80%;
-}
-
-.Data {
-  margin: 15px;
+.hompage {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: #c5c5c5;
 }
 
 .dropdown {
-  margin-top: 40px;
-  justify-content: center;
+  margin-top: 30px;
   display: flex;
-  color: #000;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.drop1,
+.sorting {
+  display: flex;
+  max-width: 250px;
+  padding-right: 35px;
+}
+
+.drop1 {
+  margin-top: 13px;
+}
+
 .drop2 {
-  margin-top: 7px;
-  margin-left: 20px;
-  text-decoration: none;
-  text-transform: none;
-  color: black;
+  margin-top: 13px;
 }
 
-.btn {
-  margin-left: 50px;
-  margin-top: 50px;
+.search {
+  max-width: 300px;
+}
+.item {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  max-width: 200px;
 }
 </style>
