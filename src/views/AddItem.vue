@@ -76,7 +76,7 @@ export default {
         );
         this.$bvToast.toast([$closeButton], {
           // id: id,
-          title: `Toast ${this.count}`,
+          title: `Data Added Successfully`,
           noCloseButton: true,
         });
 
