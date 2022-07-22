@@ -65,16 +65,30 @@ export default {
       ) {
         this.showAlert = true;
       } else {
+        const h = this.$createElement;
+        // const id = `my-toast-${this.count++}`;
+        const $closeButton = h(
+          "b-button",
+          {
+            on: { click: () => this.$router.push({ path: "/" }) },
+          },
+          "Okay"
+        );
+        this.$bvToast.toast([$closeButton], {
+          // id: id,
+          title: `Toast ${this.count}`,
+          noCloseButton: true,
+        });
+
         this.$store.commit("addItem", {
           id: this.id,
           title: this.title,
           author: this.author,
           description: this.description,
         });
-        alert("Data added successfully");
-        this.$router.push({
-          path: "/",
-        });
+        // this.$router.push({
+        //   path: "/",
+        // });
       }
     },
   },
