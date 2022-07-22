@@ -2,10 +2,10 @@
   <div id="about">
     <div class="container">
       <div class="row">
-        <div class="col-md-7">
-          <img src="../assets/download1.jpeg" alt="Image1" width="700" />
+        <div class="col-md-6">
+          <img src="../assets/i3.png" alt="Image1" class="image" />
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
           <h3>Lorem Details</h3>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
@@ -34,14 +34,25 @@ export default {
 
 <style scoped>
 #about {
-  background: lightyellow;
-  padding-top: 50px;
+  background-color: #ffffff;
+}
+
+.image {
+  width: 300px;
+}
+
+.container {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.row {
   padding-bottom: 50px;
 }
+
 h3 {
   color: brown;
-  margin-top: 150px;
-  margin-bottom: 15px;
+  padding-top: 100px;
 }
 p {
   color: black;

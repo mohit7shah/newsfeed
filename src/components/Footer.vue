@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <p>© Copyright 2022. All Rights Reserved.</p>
+          <b class="copyright">© Copyright 2022. All Rights Reserved.</b>
         </div>
         <div class="col-md-4">
           <i class="material-icons"> mail</i>
@@ -22,7 +22,6 @@ footer {
   width: 100%;
   position: fixed;
   bottom: 0;
-  margin-top: 25px;
 }
 .container {
   text-align: center;
@@ -33,6 +32,7 @@ footer {
 .material-icons {
   font-size: 20px;
   margin-top: 2px;
-  margin-left: 25px;
+  /* margin-left: 25px; */
+  /* padding: 5px; */
 }
 </style>

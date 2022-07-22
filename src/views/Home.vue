@@ -152,7 +152,9 @@ export default {
 }
 
 .search {
+  padding: 10px;
   max-width: 300px;
+  height: 35px;
 }
 .item {
   margin-top: 20px;

@@ -66,7 +66,21 @@ export default {
         this.form.number == "" ||
         this.form.checked == ""
       ) {
-        alert("Please fill all the fields");
+        this.$bvToast.toast("Please fill all the fields", {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+          toastClass: "toast-top-right",
+          noautoHide: true,
+        });
+        // } else if (this.form.name != "/^[a-zA-Z ]+$/") {
+        //   this.$bvToast.toast("Please fill all the fields", {
+        //     title: "Error",
+        //     variant: "danger",
+        //     solid: true,
+        //     toastClass: "toast-top-right",
+        //     noautoHide: true,
+        //   });
       } else {
         alert("Subscribed");
       }
