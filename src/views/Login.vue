@@ -1,7 +1,7 @@
 <template>
   <div class="login" @submit.prevent="login">
-    <h1>Login</h1>
-    <b-card>
+    <h1 class="heading">Login</h1>
+    <b-card class="bcard">
       <div class="details">
         Username :
         <input type="text" name="username" v-model="input.username" />
@@ -12,6 +12,7 @@
         <input type="password" name="password" v-model="input.password" />
       </div>
       <b-button class="button btn-success" @click="login()">Login</b-button>
+      <b-button class="button btn-danger" @click="cancel()">Cancel</b-button>
     </b-card>
   </div>
 </template>
@@ -26,8 +27,18 @@ export default {
     };
   },
   methods: {
+    cancel() {
+      this.$router.push({
+        path: "/",
+      });
+    },
     login() {
-      if (this.input.username != "" && this.input.password != "") {
+      if (
+        this.input.username != "" &&
+        this.input.password != "" &&
+        this.input.username != " " &&
+        this.input.password != " "
+      ) {
         if (
           this.input.username == this.$parent.mockAccount.username &&
           this.input.password == this.$parent.mockAccount.password
@@ -51,14 +62,29 @@ export default {
 
 <style scoped>
 .login {
-  margin-top: 150px;
-  text-align: center;
-  width: 50%;
-  margin-left: 400px;
+  padding-top: 150px;
+  /* width: 100%; */
+  height: 100vh;
+  padding-left: 250px;
+  padding-right: 150px;
+  background-image: url("../assets/backgroundlogin.jpg");
 }
 
 .details {
   margin-top: 20px;
+}
+
+.heading {
+  font-size: 50px;
+  color: #fff;
+}
+
+.bcard {
+  align-content: center;
+  justify-content: center;
+  padding-top: 50px;
+  height: 300px;
+  background: whitesmoke;
 }
 
 .password {
@@ -67,5 +93,6 @@ export default {
 
 .button {
   margin-top: 30px;
+  margin-right: 10px;
 }
 </style>

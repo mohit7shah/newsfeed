@@ -1,5 +1,6 @@
 <template>
   <div class="news">
+    <b-modal v-model="modalShow" @ok="handlingOkay">Are you sure ?</b-modal>
     <b-card
       class="product"
       v-for="(data, index) in filterproduct"
@@ -32,7 +33,11 @@
 // import axios from "axios";
 export default {
   props: ["id", "title", "author", "description", "searchTxt"],
-
+  data() {
+    return {
+      modalShow: false,
+    };
+  },
   mounted() {
     this.$store.dispatch("getProducts");
   },
@@ -59,6 +64,12 @@ export default {
     },
   },
   methods: {
+    handlingOkay() {
+      this.modalShow = false;
+    },
+    // handlingCancel() {
+    //   this.modalShow = false;
+    // },
     editButton(id) {
       if (localStorage.getItem("isLogin") == "true") {
         // alert("Are you sure you want to edit this data?");
@@ -67,18 +78,14 @@ export default {
         });
         console.log("product" + id);
         this.$store.commit("setId", id);
-      } else {
-        this.$router.push({ path: "/login" });
       }
     },
     deleteEvent(id) {
-      // console.log(id);
+      this.modalShow = false;
       if (localStorage.getItem("isLogin") == "true") {
-        alert("Are you sure you want to delete this item?");
+        // alert("Are you sure you want to delete this data?");
+        this.modalShow = true;
         this.$store.commit("deleteNews", id);
-        // console.log(id);
-      } else {
-        this.$router.push("/login");
       }
     },
   },

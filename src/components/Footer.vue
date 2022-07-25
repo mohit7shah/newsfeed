@@ -25,14 +25,12 @@
 }
 .container {
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-top: 5px;
 }
 
 .material-icons {
   font-size: 20px;
   margin-top: 2px;
-  /* margin-left: 25px; */
-  /* padding: 5px; */
 }
 </style>
