@@ -68,8 +68,11 @@ export default new Vuex.Store({
       state.id = id;
     },
     editItem(state, news) {
-      // console.log(news);
-      state.news[news.id] = news;
+      console.log(news);
+      let ind = state.news.findIndex((item) => {
+        return item.id === news.id;
+      });
+      state.news[ind] = news;
     },
     setProduct(state, news) {
       state.news = state.news.concat(news);
@@ -90,6 +93,7 @@ export default new Vuex.Store({
 
   getters: {
     newsDetails(state) {
+      // console.log(state.news);
       return state.news;
     },
     isLogin(state) {

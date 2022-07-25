@@ -11,10 +11,19 @@
               :options="option"
             >
             </b-form-select>
-            <b-nav-dropdown text="Sorting In" class="drop2">
+            <!-- <b-nav-dropdown text="Sorting In" class="drop2">
               <b-dropdown-item @click="asc">Assending</b-dropdown-item>
               <b-dropdown-item @click="desc">Desending</b-dropdown-item>
-            </b-nav-dropdown>
+            </b-nav-dropdown> -->
+
+            <b-form-select
+              text="Sort In"
+              class="drop2"
+              @change="sortInFun"
+              v-model="sorting_in"
+              :options="option2"
+            >
+            </b-form-select>
           </div>
           <b-form-input
             size="sm"
@@ -60,6 +69,22 @@ export default {
           text: "Description",
         },
       ],
+
+      option2: [
+        {
+          value: "",
+          text: "Sort in",
+        },
+        {
+          value: "asc",
+          text: "Ascending",
+        },
+        {
+          value: "desc",
+          text: "Descending",
+        },
+      ],
+      sorting_in: "",
     };
   },
   components: {
@@ -71,6 +96,13 @@ export default {
   //   },
   // },
   methods: {
+    sortInFun() {
+      if (this.sorting_in == "asc") {
+        this.asc();
+      } else if (this.sorting_in == "desc") {
+        this.desc();
+      }
+    },
     asc() {
       // console.log(this.sorting_by);
       if (this.sorting_by === "title") {
@@ -125,9 +157,10 @@ export default {
 <style scoped>
 .hompage {
   padding: 20px;
-  width: 100%;
+  /* width: 100%;*/
   height: 100%;
-  background-color: #c5c5c5;
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #ffe5e5, rgb(237, 228, 255));
 }
 
 .dropdown {
@@ -144,20 +177,26 @@ export default {
 }
 
 .drop1 {
-  margin-top: 13px;
+  margin-top: 20px;
+  margin-right: 10px;
+  width: 100px;
 }
 
 .drop2 {
-  margin-top: 13px;
+  margin-top: 20px;
+  width: 150px;
 }
 
 .search {
+  margin: 25px 10px 10px 10px;
   padding: 10px;
   max-width: 300px;
   height: 35px;
+  margin-right: 10px;
+  min-width: 70px;
 }
 .item {
-  margin-top: 20px;
+  margin-top: 25px;
   margin-bottom: 5px;
   max-width: 200px;
 }

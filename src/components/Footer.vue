@@ -16,8 +16,8 @@
 </template>
 
 <style scoped>
-footer {
-  background: grey;
+.footer {
+  background: rgb(173, 173, 173);
   height: 35px;
   width: 100%;
   position: fixed;

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="edititem">
     <h3>Edit Data Inputed</h3>
     <b-card class="editcard">
@@ -93,4 +93,4 @@ export default {
 .desc {
   width: 26%;
 }
-</style>
+</style> -->

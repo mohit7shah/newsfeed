@@ -9,9 +9,13 @@
     >
       Please fill all the fields properly
     </b-alert>
-    <div class=""></div>
+    <!-- <b-button @click="successAlert">Open Modal</b-button> -->
+    <b-modal v-model="modalShow" @ok="handlingokay"
+      >Data added Successfully!</b-modal
+    >
+
     <div class="newitem">
-      <h3>New Data Input</h3>
+      <h3>{{ componentName }} Data</h3>
       <b-card class="newcard">
         <div class="product_titles">
           <b class="title my-2">Title: </b>
@@ -31,7 +35,9 @@
             class="desc"
           ></textarea>
         </div>
-        <b-button class="btn btn-success" @click="addData">Add Data</b-button>
+        <b-button class="btn btn-success" @click="addData"
+          >{{ componentName }} Data</b-button
+        >
         <b-button class="btn btn-danger" @click="canceladding">Cancel</b-button>
       </b-card>
     </div>
@@ -43,9 +49,12 @@ export default {
   data() {
     return {
       title: "",
+      id: "",
       author: "",
       description: "",
       showAlert: false,
+      modalShow: false,
+      componentName: "",
     };
   },
   methods: {
@@ -54,43 +63,79 @@ export default {
         path: "/",
       });
     },
+    handlingokay() {
+      this.$router.push({
+        path: "/",
+      });
+    },
     addData() {
-      if (
-        this.title == "" ||
-        this.author == "" ||
-        this.description == "" ||
-        this.title == " " ||
-        this.author == " " ||
-        this.description == " "
-      ) {
-        this.showAlert = true;
+      console.log(this.componentName);
+      if (this.componentName == "Add") {
+        if (
+          this.title == "" ||
+          this.author == "" ||
+          this.description == "" ||
+          this.title == " " ||
+          this.author == " " ||
+          this.description == " "
+        ) {
+          this.showAlert = true;
+        } else {
+          this.modalShow = true;
+          // if (this.modalShow) {
+          //   this.$router.push({
+          //     path: "/",
+          //   });
+          // }
+          this.$store.commit("addItem", {
+            id: this.id,
+            title: this.title,
+            author: this.author,
+            description: this.description,
+          });
+        }
       } else {
-        const h = this.$createElement;
-        // const id = `my-toast-${this.count++}`;
-        const $closeButton = h(
-          "b-button",
-          {
-            on: { click: () => this.$router.push({ path: "/" }) },
-          },
-          "Okay"
-        );
-        this.$bvToast.toast([$closeButton], {
-          // id: id,
-          title: `Data Added Successfully`,
-          noCloseButton: true,
-        });
-
-        this.$store.commit("addItem", {
-          id: this.id,
-          title: this.title,
-          author: this.author,
-          description: this.description,
-        });
-        // this.$router.push({
-        //   path: "/",
-        // });
+        console.log("edit");
+        if (this.title == "" || this.author == "" || this.description == "") {
+          this.showAlert = true;
+        } else {
+          this.modalShow = true;
+          this.$store.commit("editItem", {
+            id: this.id,
+            title: this.title,
+            author: this.author,
+            description: this.description,
+          });
+          // alert("Data Updated");
+          // this.$router.push({
+          //   path: "/",
+          // });
+        }
       }
     },
+  },
+  mounted() {
+    if (this.$route.name == "add") {
+      this.componentName = "Add";
+      console.log("add");
+    } else if (this.$route.name == "edit") {
+      console.log("edit");
+      this.componentName = "Edit";
+      let newsData = this.$store.getters["newsDetails"];
+      let id = this.$store.getters["newsId"];
+
+      console.log(this.$store.getters["newsDetails"]);
+      console.log(id);
+
+      newsData.forEach((item) => {
+        if (item.id == id) {
+          this.id = item.id;
+          this.title = item.title;
+          this.author = item.author;
+          this.description = item.description;
+        }
+      });
+    }
   },
 };
 </script>

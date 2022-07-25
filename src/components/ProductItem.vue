@@ -108,8 +108,9 @@ export default {
 .news {
   justify-content: center;
   align-items: center;
-  padding-left: 150px;
-  padding-right: 150px;
+  width: fit-content;
+  padding-left: 70px;
+  padding-right: 70px;
   padding-bottom: 30px;
 }
 

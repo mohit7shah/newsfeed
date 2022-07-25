@@ -33,13 +33,13 @@ const router = new VueRouter({
     },
     {
       path: "/additem",
-      name: "addItem",
+      name: "add",
       component: () => import("../views/AddItem.vue"),
     },
     {
       path: "/edititem",
-      name: "editItem",
-      component: () => import("../views/EditItem.vue"),
+      name: "edit",
+      component: () => import("../views/AddItem.vue"),
     },
   ],
 });
