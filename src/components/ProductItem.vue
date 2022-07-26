@@ -30,7 +30,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 export default {
   props: ["id", "title", "author", "description", "searchTxt"],
   data() {
@@ -73,9 +72,6 @@ export default {
       this.modalShow = false;
       this.newsId = "";
     },
-    // handlingCancel() {
-    //   this.modalShow = false;
-    // },
     editButton(id) {
       if (localStorage.getItem("isLogin") == "true") {
         // alert("Are you sure you want to edit this data?");

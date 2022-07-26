@@ -10,7 +10,6 @@
       >
         Please fill all the fields properly
       </b-alert>
-      <!-- <b-button @click="successAlert">Open Modal</b-button> -->
       <b-modal v-model="modalShow" @ok="handlingokay"
         >Data added Successfully!</b-modal
       >
@@ -79,11 +78,6 @@ export default {
         ) {
           this.showAlert = true;
         } else {
-          // if (this.modalShow) {
-          //   this.$router.push({
-          //     path: "/",
-          //   });
-          // }
           this.$store.commit("addItem", {
             id: this.id,
             title: this.title,
@@ -92,7 +86,6 @@ export default {
           });
         }
       } else {
-        // console.log("edit");
         if (this.title == "" || this.author == "" || this.description == "") {
           this.showAlert = true;
         } else {
@@ -102,10 +95,6 @@ export default {
             author: this.author,
             description: this.description,
           });
-          // alert("Data Updated");
-          // this.$router.push({
-          //   path: "/",
-          // });
         }
       }
 
@@ -114,24 +103,16 @@ export default {
       });
     },
     addData() {
-      // console.log(this.componentName);
-
       this.modalShow = true;
     },
   },
   mounted() {
     if (this.$route.name == "add") {
       this.componentName = "Add";
-      // console.log("add");
     } else if (this.$route.name == "edit") {
-      // console.log("edit");
       this.componentName = "Edit";
       let newsData = this.$store.getters["newsDetails"];
       let id = this.$store.getters["newsId"];
-
-      // console.log(this.$store.getters["newsDetails"]);
-      // console.log(id);
-
       newsData.forEach((item) => {
         if (item.id == id) {
           this.id = item.id;
@@ -162,8 +143,6 @@ export default {
 .container {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* flex: auto; */
 }
 
 .btn {

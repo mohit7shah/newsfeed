@@ -40,14 +40,12 @@ export default {
   },
   computed: {
     isLoginFun() {
-      // return this.$store.getters.isLogin;
       let isLogin;
       if (localStorage.getItem("isLogin") == "true") {
         isLogin = true;
       } else {
         isLogin = false;
       }
-      // console.log(isLogin);
       return isLogin;
     },
   },
@@ -62,8 +60,6 @@ export default {
     },
     logout() {
       console.log("hii");
-      // this.authenticated = false;
-      // this.$store.commit("logout");
       this.modalShow = true;
       // alert("Logout Successful");
     },

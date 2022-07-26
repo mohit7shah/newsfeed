@@ -1,12 +1,28 @@
 <template>
   <div class="contact">
+    <b-alert
+      v-model="showAlert"
+      class="position-fixed fixed-top m-0 rounded-0"
+      style="z-index: 2000"
+      variant="danger"
+      dismissible
+    >
+      Please fill all the fields properly
+    </b-alert>
+    <b-modal
+      v-model="modalShow"
+      @ok="handlingokay"
+      ok-only
+      title="You have subscribed to our newsletter"
+    >
+      Data added Successfully!</b-modal
+    >
     <b-card class="data">
       <b-form-group
         id="input-group-1"
         label="Email Address :"
         label-for="input-1"
         size="20"
-        description="We'll never share the information with anyone else..."
       >
         <b-form-input
           id="input-1"
@@ -50,6 +66,8 @@
 export default {
   data() {
     return {
+      showAlert: false,
+      modalShow: false,
       form: {
         email: "",
         name: "",
@@ -59,6 +77,12 @@ export default {
     };
   },
   methods: {
+    handlingokay() {
+      this.modalShow = false;
+      this.$router.push({
+        path: "/",
+      });
+    },
     onsubmit() {
       if (
         this.form.email == "" ||
@@ -66,23 +90,22 @@ export default {
         this.form.number == "" ||
         this.form.checked == ""
       ) {
-        this.$bvToast.toast("Please fill all the fields", {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-          toastClass: "toast-top-right",
-          noautoHide: true,
-        });
-        // } else if (this.form.name != "/^[a-zA-Z ]+$/") {
-        //   this.$bvToast.toast("Please fill all the fields", {
-        //     title: "Error",
-        //     variant: "danger",
-        //     solid: true,
-        //     toastClass: "toast-top-right",
-        //     noautoHide: true,
-        //   });
+        this.showAlert = true;
       } else {
-        alert("Subscribed");
+        console.log(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/.test(this.form.email));
+        console.log(/^[a-zA-Z]/.test(this.form.name));
+        console.log(/^[0-9]/.test(this.form.email));
+
+        if (
+          !/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/.test(this.form.email) &&
+          this.form.number.length != 10 &&
+          !/^[A-Za-z]/.test(this.form.name) &&
+          !/^[0-9]/.test(this.form.number)
+        ) {
+          this.showAlert = true;
+        } else {
+          this.modalShow = true;
+        }
       }
     },
   },

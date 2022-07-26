@@ -18,10 +18,6 @@
               :options="option"
             >
             </b-form-select>
-            <!-- <b-nav-dropdown text="Sorting In" class="drop2">
-              <b-dropdown-item @click="asc">Assending</b-dropdown-item>
-              <b-dropdown-item @click="desc">Desending</b-dropdown-item>
-            </b-nav-dropdown> -->
 
             <b-form-select
               text="Sort In"
@@ -98,11 +94,6 @@ export default {
   components: {
     productitem,
   },
-  // computed: {
-  //   hide() {
-  //     return this.$store.getters.isLogin;
-  //   },
-  // },
   methods: {
     handlingOkay() {
       this.$router.push({ path: "/login" });
@@ -116,7 +107,6 @@ export default {
       }
     },
     asc() {
-      // console.log(this.sorting_by);
       if (this.sorting_by === "title") {
         this.$store.getters.newsDetails.sort((a, b) =>
           a.title.localeCompare(b.title)
@@ -134,7 +124,6 @@ export default {
       }
     },
     desc() {
-      // console.log(this.sorting_by);
       if (this.sorting_by === "title") {
         this.$store.getters.newsDetails.sort((a, b) =>
           b.title.localeCompare(a.title)
@@ -153,7 +142,6 @@ export default {
     },
     verifyLogin() {
       console.log(localStorage.getItem("isLogin"));
-      // console.log(this.$store.getters.isLogin);
       if (localStorage.getItem("isLogin") == "true") {
         console.log("login");
         this.$router.push({
@@ -161,10 +149,6 @@ export default {
         });
       } else {
         this.loginModal = true;
-        // this.$router.push({
-        //   path: "/login",
-        // });
-        // alert("Please Login First");
       }
     },
   },

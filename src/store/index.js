@@ -51,7 +51,6 @@ export default new Vuex.Store({
     addItem(state, news) {
       console.log(news);
       state.news.push(news);
-      // commit("addNews", news);
     },
     logout(state) {
       state.authenticated = false;
@@ -64,7 +63,6 @@ export default new Vuex.Store({
       state.authenticated = true;
     },
     setId(state, id) {
-      // console.log("store" + id);
       state.id = id;
     },
     editItem(state, news) {
@@ -85,7 +83,6 @@ export default new Vuex.Store({
           "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=d8fe6a83554f47b2852cbf2a25489f58"
         )
         .then((response) => {
-          // console.log(response.data.articles);
           commit("setProduct", response.data.articles);
         });
     },
@@ -93,7 +90,6 @@ export default new Vuex.Store({
 
   getters: {
     newsDetails(state) {
-      // console.log(state.news);
       return state.news;
     },
     isLogin(state) {

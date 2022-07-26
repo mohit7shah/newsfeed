@@ -68,8 +68,6 @@ export default {
           this.input.username == this.$parent.mockAccount.username &&
           this.input.password == this.$parent.mockAccount.password
         ) {
-          // this.$emit("authenticated", true);
-          // this.$store.commit("login");
           this.modalShow = true;
         } else {
           // alert("error in login");
@@ -89,7 +87,6 @@ export default {
 <style scoped>
 .login {
   padding-top: 150px;
-  /* width: 100%; */
   height: 100vh;
   padding-left: 250px;
   padding-right: 150px;
