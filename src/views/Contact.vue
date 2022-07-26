@@ -18,12 +18,10 @@
       Data added Successfully!</b-modal
     >
     <b-card class="data">
-      <b-form-group
-        id="input-group-1"
-        label="Email Address :"
-        label-for="input-1"
-        size="20"
-      >
+      <h2>Contact Us</h2>
+      <hr />
+      <b-form-group id="input-group-1" label-for="input-1" size="20">
+        <h5 class="head">Email Address :</h5>
         <b-form-input
           id="input-1"
           v-model="form.email"
@@ -32,7 +30,8 @@
           required
         ></b-form-input>
       </b-form-group>
-      <b-form-group id="input-group-2" label="Your Name :" label-for="input-2">
+      <b-form-group id="input-group-2" label-for="input-2">
+        <h5 class="head">Your Name :</h5>
         <b-form-input
           id="input-2"
           v-model="form.name"
@@ -40,7 +39,8 @@
           required
         ></b-form-input>
       </b-form-group>
-      <b-form-group id="input-group-3" label="Contact No :" label-for="input-2">
+      <b-form-group id="input-group-3" label-for="input-2">
+        <h5 class="head">Contact No :</h5>
         <b-form-input
           id="input-2"
           v-model="form.number"
@@ -116,29 +116,29 @@ export default {
 .contact {
   background: url("../assets/subscriptionservice.png");
   background-size: cover;
-  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   /* width: 100vw; */
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.head {
+  text-align: left;
+}
+
 .data {
-  padding-top: 20px;
-  border: none;
+  width: 450px;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 10px;
+  padding: 20px;
   box-shadow: rgb(4, 4, 4) 0px 0px 10px;
-  background: rgb(256, 256, 256);
   color: #000;
 }
 
 .btn {
   margin-top: 30px;
   margin-left: 10px;
-}
-
-.text-muted {
-  color: #f5f5f5;
 }
 </style>

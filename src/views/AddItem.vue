@@ -15,7 +15,7 @@
       >
 
       <div class="newitem">
-        <h3>{{ componentName }} Data</h3>
+        <h3 class="head">{{ componentName }} Data</h3>
         <b-card class="newcard">
           <div class="product_titles">
             <b class="title my-2">Title: </b>
@@ -158,6 +158,10 @@ export default {
 
 .title {
   padding-right: 75px;
+}
+
+.head {
+  padding-top: 10px;
 }
 
 .author {
