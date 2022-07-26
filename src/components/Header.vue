@@ -1,5 +1,8 @@
 <template>
   <div id="nav">
+    <b-modal v-model="modalShow" @ok="handlingOkay" title="LogOut"
+      >Logout Successful</b-modal
+    >
     <b-navbar toggleable="lg" type="light" variant="warning" fixed="top">
       <b-navbar-brand href="/" class="dataname"> Newsfeed</b-navbar-brand>
 
@@ -27,6 +30,7 @@
 export default {
   data() {
     return {
+      modalShow: false,
       authenticated: true,
       mockAccount: {
         username: "admin",
@@ -36,7 +40,6 @@ export default {
   },
   computed: {
     isLoginFun() {
-      console.log(this.$store.getters.isLogin);
       // return this.$store.getters.isLogin;
       let isLogin;
       if (localStorage.getItem("isLogin") == "true") {
@@ -44,10 +47,16 @@ export default {
       } else {
         isLogin = false;
       }
+      // console.log(isLogin);
       return isLogin;
     },
   },
   methods: {
+    handlingOkay() {
+      localStorage.setItem("isLogin", "false");
+      this.$router.replace({ path: "/login" });
+      this.modalShow = false;
+    },
     setAuthenticated(status) {
       this.authenticated = status;
     },
@@ -55,9 +64,8 @@ export default {
       console.log("hii");
       // this.authenticated = false;
       // this.$store.commit("logout");
-      localStorage.setItem("isLogin", "false");
-      this.$router.replace({ path: "/login" });
-      alert("Logout Successful");
+      this.modalShow = true;
+      // alert("Logout Successful");
     },
   },
 };

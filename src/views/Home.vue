@@ -1,5 +1,12 @@
 <template>
   <div class="hompage">
+    <b-modal
+      v-model="loginModal"
+      @ok="handlingOkay"
+      title="Login Check!"
+      varient="danger"
+      >Please Login First !</b-modal
+    >
     <div>
       <div class="container">
         <div class="dropdown">
@@ -32,7 +39,7 @@
             v-model.trim="query"
           >
           </b-form-input>
-          <b-button to="/additem" class="item btn-info" @click="verifyLogin"
+          <b-button class="item btn-info" @click="verifyLogin"
             >AddItem</b-button
           >
         </div>
@@ -51,6 +58,7 @@ export default {
     return {
       query: "",
       sorting_by: "",
+      loginModal: false,
       option: [
         {
           value: "",
@@ -96,6 +104,10 @@ export default {
   //   },
   // },
   methods: {
+    handlingOkay() {
+      this.$router.push({ path: "/login" });
+      this.loginModal = false;
+    },
     sortInFun() {
       if (this.sorting_in == "asc") {
         this.asc();
@@ -140,14 +152,19 @@ export default {
       }
     },
     verifyLogin() {
+      console.log(localStorage.getItem("isLogin"));
       // console.log(this.$store.getters.isLogin);
       if (localStorage.getItem("isLogin") == "true") {
+        console.log("login");
         this.$router.push({
           path: "/additem",
         });
       } else {
-        alert("Please Login First");
-        this.$router.push({ path: "/login" });
+        this.loginModal = true;
+        // this.$router.push({
+        //   path: "/login",
+        // });
+        // alert("Please Login First");
       }
     },
   },

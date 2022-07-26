@@ -18,15 +18,12 @@
 <style scoped>
 .footer {
   background: rgb(173, 173, 173);
-  height: 35px;
+  /* height: 35px; */
   width: 100%;
-  position: fixed;
-  bottom: 0;
 }
 .container {
   text-align: center;
   color: rgb(0, 0, 0);
-  margin-top: 5px;
 }
 
 .material-icons {

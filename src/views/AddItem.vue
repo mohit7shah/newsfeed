@@ -68,12 +68,6 @@ export default {
       });
     },
     handlingokay() {
-      this.$router.push({
-        path: "/",
-      });
-    },
-    addData() {
-      console.log(this.componentName);
       if (this.componentName == "Add") {
         if (
           this.title == "" ||
@@ -85,7 +79,6 @@ export default {
         ) {
           this.showAlert = true;
         } else {
-          this.modalShow = true;
           // if (this.modalShow) {
           //   this.$router.push({
           //     path: "/",
@@ -99,11 +92,10 @@ export default {
           });
         }
       } else {
-        console.log("edit");
+        // console.log("edit");
         if (this.title == "" || this.author == "" || this.description == "") {
           this.showAlert = true;
         } else {
-          this.modalShow = true;
           this.$store.commit("editItem", {
             id: this.id,
             title: this.title,
@@ -116,20 +108,29 @@ export default {
           // });
         }
       }
+
+      this.$router.push({
+        path: "/",
+      });
+    },
+    addData() {
+      // console.log(this.componentName);
+
+      this.modalShow = true;
     },
   },
   mounted() {
     if (this.$route.name == "add") {
       this.componentName = "Add";
-      console.log("add");
+      // console.log("add");
     } else if (this.$route.name == "edit") {
-      console.log("edit");
+      // console.log("edit");
       this.componentName = "Edit";
       let newsData = this.$store.getters["newsDetails"];
       let id = this.$store.getters["newsId"];
 
-      console.log(this.$store.getters["newsDetails"]);
-      console.log(id);
+      // console.log(this.$store.getters["newsDetails"]);
+      // console.log(id);
 
       newsData.forEach((item) => {
         if (item.id == id) {
