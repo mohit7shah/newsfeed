@@ -1,45 +1,49 @@
 <template>
-  <div class="container">
-    <b-alert
-      v-model="showAlert"
-      class="position-fixed fixed-top m-0 rounded-0"
-      style="z-index: 2000"
-      variant="warning"
-      dismissible
-    >
-      Please fill all the fields properly
-    </b-alert>
-    <!-- <b-button @click="successAlert">Open Modal</b-button> -->
-    <b-modal v-model="modalShow" @ok="handlingokay"
-      >Data added Successfully!</b-modal
-    >
+  <div class="page">
+    <div class="container">
+      <b-alert
+        v-model="showAlert"
+        class="position-fixed fixed-top m-0 rounded-0"
+        style="z-index: 2000"
+        variant="warning"
+        dismissible
+      >
+        Please fill all the fields properly
+      </b-alert>
+      <!-- <b-button @click="successAlert">Open Modal</b-button> -->
+      <b-modal v-model="modalShow" @ok="handlingokay"
+        >Data added Successfully!</b-modal
+      >
 
-    <div class="newitem">
-      <h3>{{ componentName }} Data</h3>
-      <b-card class="newcard">
-        <div class="product_titles">
-          <b class="title my-2">Title: </b>
-          <b-input type="text" v-model="title" class="input_title" />
-        </div>
-        <div class="product_authors">
-          <b class="author my-2">Author: </b>
-          <b-input type="text" v-model="author" />
-        </div>
-        <div class="product_detail">
-          <b class="describe my-2">Description: </b>
-          <textarea
-            type="text"
-            v-model="description"
-            rows="7"
-            cols="50"
-            class="desc"
-          ></textarea>
-        </div>
-        <b-button class="btn btn-success" @click="addData"
-          >{{ componentName }} Data</b-button
-        >
-        <b-button class="btn btn-danger" @click="canceladding">Cancel</b-button>
-      </b-card>
+      <div class="newitem">
+        <h3>{{ componentName }} Data</h3>
+        <b-card class="newcard">
+          <div class="product_titles">
+            <b class="title my-2">Title: </b>
+            <b-input type="text" v-model="title" class="input_title" />
+          </div>
+          <div class="product_authors">
+            <b class="author my-2">Author: </b>
+            <b-input type="text" v-model="author" />
+          </div>
+          <div class="product_detail">
+            <b class="describe my-2">Description: </b>
+            <textarea
+              type="text"
+              v-model="description"
+              rows="7"
+              cols="50"
+              class="desc"
+            ></textarea>
+          </div>
+          <b-button class="btn btn-success" @click="addData"
+            >{{ componentName }} Data</b-button
+          >
+          <b-button class="btn btn-danger" @click="canceladding"
+            >Cancel</b-button
+          >
+        </b-card>
+      </div>
     </div>
   </div>
 </template>
@@ -141,10 +145,23 @@ export default {
 </script>
 
 <style scoped>
+.newcard {
+  background: whitesmoke;
+}
+.page {
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 212, 0, 0.5),
+    rgba(255, 212, 212, 0.5)
+  );
+  height: 100vh;
+  width: 100%;
+}
+
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* flex: auto; */
 }
 
@@ -175,6 +192,8 @@ export default {
   margin-top: 100px;
   justify-content: center;
   width: 50%;
+  background: whitesmoke;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .product_titles {

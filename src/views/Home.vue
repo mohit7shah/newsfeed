@@ -32,7 +32,7 @@
             v-model.trim="query"
           >
           </b-form-input>
-          <b-button to="/additem" class="item btn-warning" @click="verifyLogin"
+          <b-button to="/additem" class="item btn-info" @click="verifyLogin"
             >AddItem</b-button
           >
         </div>
