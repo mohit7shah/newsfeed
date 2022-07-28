@@ -5,7 +5,6 @@
     >
     <b-navbar toggleable="lg" type="light" variant="warning" fixed="top">
       <b-navbar-brand href="/" class="dataname"> Newsfeed</b-navbar-brand>
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -75,15 +74,16 @@ export default {
 </script>
 
 <style scoped>
+.dataname {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffc107;
+}
+
 #nav {
   text-align: center;
 }
 
-.dataname {
-  margin-left: 10px;
-  font-weight: bold;
-  /* display: flex; */
-}
 .menu {
   margin-top: 5px;
   text-decoration: none;
