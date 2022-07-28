@@ -1,16 +1,14 @@
 <template>
   <div class="page">
     <div class="container">
-      <b-alert
+      <b-modal
         v-model="showAlert"
-        class="position-fixed fixed-top m-0 rounded-0"
-        style="z-index: 2000"
-        variant="warning"
-        dismissible
+        ok-variant="warning"
+        @ok="handlingokay"
+        title="Data Empty"
+        >Data add Properly!</b-modal
       >
-        Please fill all the fields properly
-      </b-alert>
-      <b-modal v-model="modalShow" @ok="handlingokay"
+      <b-modal v-model="modalShow" @ok="handlingokay" title="Data Added"
         >Data added Successfully!</b-modal
       >
 

@@ -78,7 +78,7 @@ export default {
         this.$router.push({
           path: "/edititem",
         });
-        console.log("product" + id);
+        // console.log("product" + id);
         this.$store.commit("setId", id);
       }
     },
@@ -96,6 +96,7 @@ export default {
   margin-bottom: 30px;
   border: none !important;
   box-shadow: grey 0px 0px 5px;
+  size: initial;
 }
 
 .product_title {

@@ -56,7 +56,7 @@ export default new Vuex.Store({
       state.authenticated = false;
     },
     deleteNews(state, id) {
-      console.log(id);
+      // console.log(id);
       state.news.splice(id, 1);
     },
     login(state) {
@@ -66,7 +66,7 @@ export default new Vuex.Store({
       state.id = id;
     },
     editItem(state, news) {
-      console.log(news);
+      // console.log(news);
       let ind = state.news.findIndex((item) => {
         return item.id === news.id;
       });
