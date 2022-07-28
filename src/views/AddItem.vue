@@ -1,27 +1,35 @@
 <template>
   <div class="page">
     <div class="container">
-      <b-modal
+      <b-alert
         v-model="showAlert"
-        ok-variant="warning"
+        class="position-fixed fixed-top m-0 rounded-0"
+        style="z-index: 2000"
+        variant="danger"
+        dismissible
+      >
+        Please fill all the fields properly
+      </b-alert>
+      <b-modal v-model="modalShow" @ok="handlingokay" title="Data Added">
+        Data added Successfully!</b-modal
+      >
+      <b-modal
+        v-model="showAlertModal"
         @ok="handlingokay"
-        title="Data Empty"
-        >Data add Properly!</b-modal
+        title="Data not Enter Particularly"
       >
-      <b-modal v-model="modalShow" @ok="handlingokay" title="Data Added"
-        >Data added Successfully!</b-modal
+        Please add Data Properly!</b-modal
       >
-
       <div class="newitem">
         <h3 class="head">{{ componentName }} Data</h3>
         <b-card class="newcard">
           <div class="product_titles">
             <b class="title my-2">Title: </b>
-            <b-input type="text" v-model="title" class="input_title" />
+            <b-input type="text" v-model="title" class="input_title" required />
           </div>
           <div class="product_authors">
             <b class="author my-2">Author: </b>
-            <b-input type="text" v-model="author" />
+            <b-input type="text" v-model="author" required />
           </div>
           <div class="product_detail">
             <b class="describe my-2">Description: </b>
@@ -31,6 +39,7 @@
               rows="7"
               cols="50"
               class="desc"
+              required
             ></textarea>
           </div>
           <b-button class="btn btn-success" @click="addData"
@@ -54,6 +63,7 @@ export default {
       author: "",
       description: "",
       showAlert: false,
+      showAlertModal: false,
       modalShow: false,
       componentName: "",
     };
@@ -74,7 +84,8 @@ export default {
           this.author == " " ||
           this.description == " "
         ) {
-          this.showAlert = true;
+          console.log("Please fill all the fields properly");
+          this.showAlertModal = true;
         } else {
           this.$store.commit("addItem", {
             id: this.id,
@@ -95,7 +106,6 @@ export default {
           });
         }
       }
-
       this.$router.push({
         path: "/",
       });

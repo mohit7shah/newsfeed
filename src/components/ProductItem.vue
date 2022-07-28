@@ -115,8 +115,8 @@ export default {
   justify-content: center;
   align-items: center;
   width: fit-content;
-  padding-left: 70px;
-  padding-right: 70px;
+  /* padding-left: 150px; */
+  /* padding-right: 150px; */
   padding-bottom: 30px;
 }
 

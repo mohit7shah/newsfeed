@@ -14,11 +14,18 @@
           <router-link to="/about" class="menu">About</router-link>
           <router-link to="/careers" class="menu">Careers</router-link>
           <router-link to="/contact" class="menu">Contact</router-link>
-          <div v-if="isLoginFun" class="menu logoutLink" @click="logout">
+          <b-button
+            v-if="isLoginFun"
+            class="logoutLink btn-outline-warning"
+            @click="logout"
+          >
             Logout
-          </div>
-          <router-link v-if="!isLoginFun" to="/login" class="menu"
-            >Login</router-link
+          </b-button>
+          <b-button
+            v-if="!isLoginFun"
+            to="/login"
+            class="logoutLink btn-success"
+            >Login</b-button
           >
         </b-nav>
       </b-collapse>
@@ -73,15 +80,20 @@ export default {
 }
 
 .dataname {
-  margin-left: 15px;
-  display: flex;
+  margin-left: 10px;
+  font-weight: bold;
+  /* display: flex; */
 }
 .menu {
+  margin-top: 5px;
   text-decoration: none;
   margin-left: 15px;
   color: black;
 }
 .logoutLink {
+  width: 100px;
+  margin-left: 1010px;
+  text-decoration: none;
   cursor: pointer;
 }
 </style>

@@ -8,7 +8,7 @@
       >Please Login First !</b-modal
     >
     <div>
-      <div class="container">
+      <div>
         <div class="dropdown">
           <div class="sorting">
             <b-form-select
@@ -36,7 +36,7 @@
           >
           </b-form-input>
           <b-button class="item btn-info" @click="verifyLogin"
-            >AddItem</b-button
+            >Add Item</b-button
           >
         </div>
       </div>
@@ -158,13 +158,14 @@ export default {
 <style scoped>
 .hompage {
   padding: 20px;
-  /* width: 100%;*/
+  width: 100%;
   height: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background-image: linear-gradient(to top, #ffe5e5, rgb(237, 228, 255));
 }
 
 .dropdown {
+  margin-bottom: 13px;
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
@@ -191,7 +192,7 @@ export default {
 .search {
   margin: 25px 10px 10px 10px;
   padding: 10px;
-  max-width: 300px;
+  max-width: 500px;
   height: 35px;
   margin-right: 10px;
   min-width: 70px;
@@ -200,5 +201,6 @@ export default {
   margin-top: 25px;
   margin-bottom: 5px;
   max-width: 200px;
+  min-width: 100px;
 }
 </style>
