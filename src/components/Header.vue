@@ -8,11 +8,13 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-nav>
+        <div>
           <router-link to="/" class="menu" active>Home</router-link>
           <router-link to="/about" class="menu">About</router-link>
           <router-link to="/careers" class="menu">Careers</router-link>
           <router-link to="/contact" class="menu">Contact</router-link>
+        </div>
+        <div class="btn-container">
           <b-button
             v-if="isLoginFun"
             class="logoutLink btn-outline-warning"
@@ -26,7 +28,7 @@
             class="logoutLink btn-success"
             >Login</b-button
           >
-        </b-nav>
+        </div>
       </b-collapse>
     </b-navbar>
     <router-view @authenticated="setAuthenticated" />
@@ -75,7 +77,7 @@ export default {
 
 <style scoped>
 .dataname {
-  font-size: 20px;
+  /* padding-right: 5px; */
   font-weight: bold;
   color: #ffc107;
 }
@@ -87,13 +89,16 @@ export default {
 .menu {
   margin-top: 5px;
   text-decoration: none;
-  margin-left: 15px;
+  padding-right: 10px;
   color: black;
+  /* font-weight: bold; */
 }
 .logoutLink {
   width: 100px;
-  margin-left: 1010px;
   text-decoration: none;
   cursor: pointer;
+}
+.navbar-collapse {
+  justify-content: space-between;
 }
 </style>

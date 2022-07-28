@@ -76,24 +76,12 @@ export default {
     },
     handlingokay() {
       if (this.componentName == "Add") {
-        if (
-          this.title == "" ||
-          this.author == "" ||
-          this.description == "" ||
-          this.title == " " ||
-          this.author == " " ||
-          this.description == " "
-        ) {
-          console.log("Please fill all the fields properly");
-          this.showAlertModal = true;
-        } else {
-          this.$store.commit("addItem", {
-            id: this.id,
-            title: this.title,
-            author: this.author,
-            description: this.description,
-          });
-        }
+        this.$store.commit("addItem", {
+          id: this.id,
+          title: this.title,
+          author: this.author,
+          description: this.description,
+        });
       } else {
         if (this.title == "" || this.author == "" || this.description == "") {
           this.showAlert = true;
@@ -111,7 +99,19 @@ export default {
       });
     },
     addData() {
-      this.modalShow = true;
+      if (
+        this.title == "" ||
+        this.author == "" ||
+        this.description == "" ||
+        this.title == " " ||
+        this.author == " " ||
+        this.description == " "
+      ) {
+        console.log("Please fill all the fields properly");
+        this.showAlert = true;
+      } else {
+        this.modalShow = true;
+      }
     },
   },
   mounted() {
